@@ -1,4 +1,5 @@
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap"
+import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -12,8 +13,12 @@ const Header = () => {
                     </Navbar.Toggle>
                     <Navbar.Collapse id="navbarSupportedContent" className="justify-content-md-end">
                         <Nav>
-                            <Nav.Link>home</Nav.Link>
-                            <Nav.Link href="#/about">about</Nav.Link>
+                            <LinkContainer to="/">
+                                <Nav.Link>home</Nav.Link>
+                            </LinkContainer>
+                            <LinkContainer to="/about">
+                                <Nav.Link>about</Nav.Link>
+                            </LinkContainer>
                             <Nav.Link href="#/upcoming">calendar</Nav.Link>
                             <NavDropdown title="media" id="navbarScrollingDropdown">
                                 <NavDropdown.Item href="#/gallery">photos</NavDropdown.Item>
