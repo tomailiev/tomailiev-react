@@ -1,9 +1,9 @@
 import { Table } from "react-bootstrap";
 import Event from "./Event";
 
-const EventsTable = ({ events }) => {
+const EventsTable = ({ events, theme }) => {
     return (
-        <Table hover variant="dark">
+        <Table hover variant={theme || "dark"}>
             <thead>
                 <tr>
                     <th scope="col">Date</th>

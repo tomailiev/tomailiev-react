@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
+import Calendar from './components/Calendar';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/calendar" element={<Calendar />} />
       </Routes>
       <Footer />
     </div>

@@ -19,7 +19,9 @@ const Header = () => {
                             <LinkContainer to="/about">
                                 <Nav.Link>about</Nav.Link>
                             </LinkContainer>
-                            <Nav.Link href="#/upcoming">calendar</Nav.Link>
+                            <LinkContainer to="/calendar">
+                                <Nav.Link>calendar</Nav.Link>
+                            </LinkContainer>
                             <NavDropdown title="media" id="navbarScrollingDropdown">
                                 <NavDropdown.Item href="#/gallery">photos</NavDropdown.Item>
                                 <NavDropdown.Item href="#/audio">audio</NavDropdown.Item>
