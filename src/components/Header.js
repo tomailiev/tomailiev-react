@@ -1,31 +1,34 @@
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap";
-import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
         <header className="text-capitalize snaptarget">
             <Navbar expand="lg" bg="light">
                 <Container>
-                    <Navbar.Brand href="#">Toma Iliev</Navbar.Brand>
-                    <Navbar.Toggle type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    </Navbar.Toggle>
+                    <LinkContainer to="/">
+                        <Navbar.Brand>Toma Iliev</Navbar.Brand>
+                    </LinkContainer>
+                    <Navbar.Toggle aria-controls="navbarSupportedContent" label="Toggle navigation" />
                     <Navbar.Collapse id="navbarSupportedContent" className="justify-content-md-end">
                         <Nav>
                             <LinkContainer to="/">
                                 <Nav.Link>home</Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to="/about">
+                            <LinkContainer to="about">
                                 <Nav.Link>about</Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to="/calendar">
+                            <LinkContainer to="calendar">
                                 <Nav.Link>calendar</Nav.Link>
                             </LinkContainer>
                             <NavDropdown title="media" id="navbarScrollingDropdown">
                                 <NavDropdown.Item href="#/gallery">photos</NavDropdown.Item>
-                                <NavDropdown.Item href="#/audio">audio</NavDropdown.Item>
-                                <NavDropdown.Item href="#/video">video</NavDropdown.Item>
+                                <LinkContainer to="audios">
+                                    <NavDropdown.Item>audio</NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to="videos">
+                                    <NavDropdown.Item>video</NavDropdown.Item>
+                                </LinkContainer>
                             </NavDropdown>
                             <Nav.Link href="#/disco">discography</Nav.Link>
                             <Nav.Link href="#/contact">contact</Nav.Link>

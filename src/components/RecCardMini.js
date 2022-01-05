@@ -1,4 +1,5 @@
 import { Button, Card } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 const RecCardMini = ({ rec }) => {
     return (
@@ -12,7 +13,9 @@ const RecCardMini = ({ rec }) => {
                 <Button href={rec.cdUrl} rel="noreferrer" target="_blank" size="sm" variant="outline-dark">
                     Buy CD
                 </Button>
-                <Button href="#/disco" size="sm" variant="outline-dark">More CDs</Button>
+                <LinkContainer to="/recs">
+                    <Button href="#/disco" size="sm" variant="outline-dark">More CDs</Button>
+                </LinkContainer>
             </Card.Body>
         </Card>
 

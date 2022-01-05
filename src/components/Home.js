@@ -1,4 +1,5 @@
 import { Button, Col, Container, Row } from "react-bootstrap"
+import { LinkContainer } from "react-router-bootstrap"
 import Banner from "./Banner"
 import BioMini from "./BioMini"
 import EventsTable from "./EventsTable"
@@ -76,16 +77,18 @@ const Home = () => {
             </div>
             <Container fluid className="bg-dark text-white py-5 snaptarget mt-3">
                 {/* <Row> */}
-                    <Container>
-                        <h3 class="pb-3">Upcoming events</h3>
-                        {events
-                            ?
-                            <>
-                                <EventsTable events={events} />
-                                <a type="button" class="btn btn-light btn-sm" href="#/upcoming">Continue browsing &#187;</a>
-                            </>
-                            : <h4>No events found <i class="fas fa-heart-broken"></i></h4>}
-                    </Container>
+                <Container>
+                    <h3 className="pb-3">Upcoming events</h3>
+                    {events
+                        ?
+                        <>
+                            <EventsTable events={events} />
+                            <LinkContainer to="/calendar">
+                                <Button size="sm" variant="light">Continue browsing &#187;</Button>
+                            </LinkContainer>
+                        </>
+                        : <h4>No events found <i class="fas fa-heart-broken"></i></h4>}
+                </Container>
                 {/* </Row> */}
             </Container>
             <Container className="py-5 bg-light snaptarget">
@@ -95,9 +98,11 @@ const Home = () => {
                         {/* {{ #if featuredAudio }} */}
                         <MediaCardMini media={audio} />
                         <div style={{ width: 'inherit' }} className="mx-auto pt-3 pb-5">
-                            <Button size="sm" variant="dark">
-                                Continue listening &#187;
-                            </Button>
+                            <LinkContainer to="/audios">
+                                <Button size="sm" variant="dark">
+                                    Continue listening &#187;
+                                </Button>
+                            </LinkContainer>
                         </div>
                     </Col>
                     {/* {{ else}}
@@ -106,9 +111,11 @@ const Home = () => {
                     <Col className="md-6">
                         <MediaCardMini media={video} />
                         <div style={{ width: 'inherit' }} className="mx-auto pt-3 pb-5">
-                            <Button size="sm" variant="dark">
-                                Continue watching &#187;
-                            </Button>
+                            <LinkContainer to="/videos">
+                                <Button size="sm" variant="dark">
+                                    Continue watching &#187;
+                                </Button>
+                            </LinkContainer>
                         </div>
                     </Col>
                 </Row>
