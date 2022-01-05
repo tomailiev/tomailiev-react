@@ -2,6 +2,7 @@ import { Button, Col, Container, Row } from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap"
 import Banner from "./Banner"
 import BioMini from "./BioMini"
+import EventModal from "./EventModal"
 import EventsTable from "./EventsTable"
 import MediaCardMini from "./MediaCardMini"
 import RecCardMini from "./RecCardMini"
@@ -67,16 +68,13 @@ const Home = () => {
             <div className="container section-container snaptarget">
                 <Row>
                     <BioMini />
-                    {/* {{ #if featuredRec }} */}
-                    <div className="col-md-3 border-left d-md-block">
+                    {rec && <div className="col-md-3 border-left d-md-block">
                         <h3 className="my-3">Featured recording</h3>
                         <RecCardMini rec={rec} />
-                    </div>
-                    {/* {{/if}} */}
+                    </div>}
                 </Row>
             </div>
             <Container fluid className="bg-dark text-white py-5 snaptarget mt-3">
-                {/* <Row> */}
                 <Container>
                     <h3 className="pb-3">Upcoming events</h3>
                     {events
@@ -87,15 +85,13 @@ const Home = () => {
                                 <Button size="sm" variant="light">Continue browsing &#187;</Button>
                             </LinkContainer>
                         </>
-                        : <h4>No events found <i class="fas fa-heart-broken"></i></h4>}
+                        : <h4>No events found <i className="fas fa-heart-broken"></i></h4>}
                 </Container>
-                {/* </Row> */}
             </Container>
             <Container className="py-5 bg-light snaptarget">
                 <h3>Featured media</h3>
                 <Row className="py-3">
-                    <Col className="md-6">
-                        {/* {{ #if featuredAudio }} */}
+                    {audio && <Col className="md-6">
                         <MediaCardMini media={audio} />
                         <div style={{ width: 'inherit' }} className="mx-auto pt-3 pb-5">
                             <LinkContainer to="/audios">
@@ -104,11 +100,8 @@ const Home = () => {
                                 </Button>
                             </LinkContainer>
                         </div>
-                    </Col>
-                    {/* {{ else}}
-                    {{/if}}
-                    {{ #if featuredVideo }} */}
-                    <Col className="md-6">
+                    </Col>}
+                    {video && <Col className="md-6">
                         <MediaCardMini media={video} />
                         <div style={{ width: 'inherit' }} className="mx-auto pt-3 pb-5">
                             <LinkContainer to="/videos">
@@ -117,11 +110,10 @@ const Home = () => {
                                 </Button>
                             </LinkContainer>
                         </div>
-                    </Col>
+                    </Col>}
                 </Row>
-                {/* {{ else}}
-                    {{/if}} */}
             </Container>
+            <EventModal event={events[0]} show={false} />
         </>
     );
 };

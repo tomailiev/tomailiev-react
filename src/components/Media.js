@@ -8,7 +8,7 @@ const Media = () => {
 
     return (
         <Container id={pathname.substring(1)} className="p-2">
-            <h1 class="pagetitle">{pathname.substring(1)}</h1>
+            <h1 className="pagetitle">{pathname.substring(1)}</h1>
             {mediaItems
                 ? mediaItems.map(x => (
                     <Row key={x.id} className="py-3">

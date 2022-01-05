@@ -1,8 +1,8 @@
 import { Ratio, Spinner } from "react-bootstrap";
 
-const Iframe = ({ media }) => {
+const Iframe = ({ media, size }) => {
     return (
-        <Ratio aspectRatio="16x9">
+        <Ratio aspectRatio={size || '16x9'}>
             {media.audioUrl || media.videoUrl
                 ? <iframe allow="autoplay" title={media.title} src={media.audioUrl || media.videoUrl}></iframe>
                 : <div>
