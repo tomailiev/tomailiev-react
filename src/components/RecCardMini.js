@@ -13,8 +13,8 @@ const RecCardMini = ({ rec }) => {
                 <Button href={rec.cdUrl} rel="noreferrer" target="_blank" size="sm" variant="outline-dark">
                     Buy CD
                 </Button>
-                <LinkContainer to="/recs">
-                    <Button href="#/disco" size="sm" variant="outline-dark">More CDs</Button>
+                <LinkContainer to="/disco">
+                    <Button size="sm" variant="outline-dark">More CDs</Button>
                 </LinkContainer>
             </Card.Body>
         </Card>

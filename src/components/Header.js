@@ -30,7 +30,9 @@ const Header = () => {
                                     <NavDropdown.Item>video</NavDropdown.Item>
                                 </LinkContainer>
                             </NavDropdown>
-                            <Nav.Link href="#/disco">discography</Nav.Link>
+                            <LinkContainer to="disco">
+                                <Nav.Link>discography</Nav.Link>
+                            </LinkContainer>
                             <Nav.Link href="#/contact">contact</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>

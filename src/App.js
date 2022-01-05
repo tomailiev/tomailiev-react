@@ -6,6 +6,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Calendar from './components/Calendar';
 import Media from './components/Media';
+import Discography from './components/Discography';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="calendar" element={<Calendar />} />
         <Route path="videos" element={<Media />} />
         <Route path="audios" element={<Media />} />
+        <Route path="disco" element={<Discography />} />
       </Routes>
       <Footer />
     </div>
