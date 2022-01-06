@@ -33,7 +33,9 @@ const Header = () => {
                             <LinkContainer to="disco">
                                 <Nav.Link>discography</Nav.Link>
                             </LinkContainer>
-                            <Nav.Link href="#/contact">contact</Nav.Link>
+                            <LinkContainer to="contact">
+                                <Nav.Link>contact</Nav.Link>
+                            </LinkContainer>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
