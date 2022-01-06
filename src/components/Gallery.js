@@ -1,23 +1,54 @@
-import { Container } from "react-bootstrap"
+import { Container, Image } from "react-bootstrap"
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+import { EffectFade, Navigation, Pagination } from "swiper";
 
 const Gallery = () => {
     return (
-        <Container className="container-fluid py-2">
+        <Container fluid className="py-2">
             <h1>Photos</h1>
-            <Swiper
-                spaceBetween={50}
-                slidesPerView={3}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
-            >
-                <SwiperSlide>Slide1</SwiperSlide>
-                <SwiperSlide>Slide2</SwiperSlide>
-                <SwiperSlide>Slide3</SwiperSlide>
-                <SwiperSlide>Slide4</SwiperSlide>
-                <SwiperSlide>Slide5</SwiperSlide>
-            </Swiper>
+            <Container className="bg-dark">
+                <Swiper
+                    modules={[Navigation, Pagination, EffectFade]}
+                    onSlideChange={() => console.log('slide change')}
+                    centeredSlides
+                    // autoHeight
+                    navigation
+                    pagination
+                    effect="fade"
+                >
+                    <SwiperSlide>
+                        <Image
+                            fluid
+                            src="https://tomailiev.com/pics/ver3.jpg" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Image
+                            fluid
+                            src="https://tomailiev.com/pics/ver3.jpg" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Image
+                            fluid
+                            src="https://tomailiev.com/pics/ver3.jpg" />
+
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Image
+                            fluid
+                            src="https://tomailiev.com/pics/ver3.jpg" />
+
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Image
+                            fluid
+                            src="https://tomailiev.com/pics/ver3.jpg" />
+                    </SwiperSlide>
+                </Swiper>
+            </Container>
         </Container >
     );
 };
