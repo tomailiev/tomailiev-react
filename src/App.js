@@ -8,6 +8,7 @@ import Calendar from './components/Calendar';
 import Media from './components/Media';
 import Discography from './components/Discography';
 import Contact from './components/Contact';
+import Gallery from './components/Gallery';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="calendar" element={<Calendar />} />
+        <Route path="photos" element={<Gallery />} />
         <Route path="videos" element={<Media />} />
         <Route path="audios" element={<Media />} />
         <Route path="disco" element={<Discography />} />

@@ -22,7 +22,10 @@ const Header = () => {
                                 <Nav.Link>calendar</Nav.Link>
                             </LinkContainer>
                             <NavDropdown title="media" id="navbarScrollingDropdown">
-                                <NavDropdown.Item href="#/gallery">photos</NavDropdown.Item>
+                                <LinkContainer to="photos">
+                                    <NavDropdown.Item>photos</NavDropdown.Item>
+                                </LinkContainer>
+
                                 <LinkContainer to="audios">
                                     <NavDropdown.Item>audio</NavDropdown.Item>
                                 </LinkContainer>
