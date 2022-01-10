@@ -1,26 +1,36 @@
-import { useEffect, useState } from "react";
-import { CardGroup, Container } from "react-bootstrap";
+import { useContext, useEffect, useState } from "react";
+import { CardGroup, Col, Container, Row } from "react-bootstrap";
+import LoadingContext from "../context/loadingContext";
 import { getItems } from "../utils/firebaseDB";
 import RecCard from "./RecCard";
 
 const Discography = () => {
+
+    const { isLoading, setIsLoading } = useContext(LoadingContext);
     const [recs, setRecs] = useState(null);
 
     useEffect(() => {
+        setIsLoading(true);
         getItems('recs')
             .then(items => {
+                setIsLoading(false);
                 setRecs(items);
             })
-            .catch(console.error);
-    }, []);
+            .catch(err => {
+                setIsLoading(false);
+                console.error(err);
+            });
+    }, [setIsLoading]);
 
     return (
-        <Container className="p-2">
-            <h1 className="mx-5">Recordings</h1>
-            {recs
-                ? <CardGroup className="card-deck disco-deck">
-                    {recs.map(x => <RecCard key={x.id} rec={x} />)}
-                </CardGroup>
+        <Container className="py-2">
+            <h1 className="pagetitle text-capitalize">Recordings</h1>
+            {recs?.length && !isLoading
+                ? <Row xl={4} lg={3} md={2} sm={1} xs={1}>
+                    {/* <CardGroup> */}
+                        {recs.map(x =><RecCard key={x.id} rec={x} />)}
+                    {/* </CardGroup> */}
+                </Row>
                 : <h4 className="py-2">No recordings found. Please check back later.</h4>
             }
         </Container>

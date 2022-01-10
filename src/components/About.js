@@ -18,9 +18,9 @@ const About = () => {
     }
     return (
         <div className="text-dark py-5 bg-light">
-            <div className="py-4"></div>
+            {/* <div className="py-4"></div> */}
             <Container>
-                <h1 className="p-2">About</h1>
+                <h1 className="py-2">About</h1>
                 <Row>
                     <BioFull text={texts.bio} />
                     <div className="col-lg-4">

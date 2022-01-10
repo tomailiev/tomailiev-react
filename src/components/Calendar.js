@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap"
 import { getItems } from "../utils/firebaseDB";
+import EventModal from "./EventModal";
 import EventsTable from "./EventsTable";
 
 
@@ -13,15 +14,18 @@ const Calendar = () => {
                 setEvents(items);
             })
             .catch(console.error);
-    });
+    }, []);
 
     return (
-        <Container id="eventHolder" className="py-5">
-            <h1 className="py-2">Performances</h1>
-            {events && events?.length
-                ? <EventsTable events={events} theme={"light"} />
-                : <h4 className="py-2">No events found. Please check back later.</h4>}
-        </Container>
+        <>
+            <Container id="eventHolder" className="py-5">
+                <h1 className="py-2">Performances</h1>
+                {events && events?.length
+                    ? <EventsTable events={events} theme={"light"} />
+                    : <h4 className="py-2">No events found. Please check back later.</h4>}
+            </Container>
+            <EventModal />
+        </>
     );
 };
 

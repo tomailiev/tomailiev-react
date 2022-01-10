@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react"
 import { Button, Col, Container, Row } from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap"
+import { getItems } from "../utils/firebaseDB"
 import Banner from "./Banner"
 import BioMini from "./BioMini"
 import EventModal from "./EventModal"
@@ -9,57 +11,26 @@ import RecCardMini from "./RecCardMini"
 
 const Home = () => {
 
-    const rec = {
-        cdUrl: "https://smile.amazon.com/Bach-Orchestral-Suites-American-Soloists/dp/B07MCDY1F2/ref=tmm_acd_swatch_0?_encoding=UTF8&qid=1598400455&sr=8-1",
-        featured: false,
-        groupName: "American Bach Soloists",
-        imageUrl: "https://tomailiev.com/pics/recs/ABS_Bach.jpg",
-        infoUrl: "https://americanbach.org/recordings/Bach-Suites/",
-        itunesUrl: "https://music.apple.com/us/album/bach-orchestral-suites/1448521533?app=itunes",
-        spotifyUrl: "https://open.spotify.com/album/5fmwhqA484R3whdRfap9X4?si=9BhSSfXjQOWaGH2MjoVOJA",
-        title: "Bach: Orchestral Suites",
-    };
+    const [rec, setRec] = useState(null);
+    const [audio, setAudio] = useState(null);
+    const [video, setVideo] = useState(null);
+    const [events, setEvents] = useState([]);
 
-    const audio = {
-        audioUrl: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/289913880&color=%23b55e33&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
-        description: "Valley of the Moon Music Festival",
-        featured: false,
-        title: "F. Mendelssohn - String Quartet in A minor op.13: II. Adagio non Lento",
-    };
-
-    const video = {
-        channelUrl: "https://www.youtube.com/channel/UCeVe6QPmQasY04T4-NyeP0Q",
-        description: "Great Arts. Period.",
-        featured: false,
-        title: "Seasons of Bulgaria: Folk-inspired Music for Solo Violin",
-        videoUrl: "https://www.youtube.com/embed/YcZhQifYpiw",
-    }
-
-    // const events = null;
-    const events = [
-        {
-            dateTime: 'October 28, 2021 at 10: 30: 00 PM UTC- 4',
-            date: 'Oct 1 2021',
-            time: '10:30',
-            eventName: "The No One's Rose",
-            eventUrl: "https://philharmonia.org/2021-2022-season-2/the-no-ones-rose/#tickets",
-            groupName: "Philharmonia Baroque Orchestra",
-            id: "47o7Njn2Vz99KyrKU0de",
-            location: "Stanford CA",
-            venue: "Bing Concert Hall",
-        },
-        {
-            dateTime: 'October 28, 2021 at 10: 30: 00 PM UTC- 4',
-            date: 'Oct 2 2021',
-            time: '10:30',
-            eventName: "The No One's Rose",
-            eventUrl: "https://philharmonia.org/2021-2022-season-2/the-no-ones-rose/#tickets",
-            groupName: "Philharmonia Baroque Orchestra",
-            id: "47o7Njn2Vz99KyrKU0d8hre",
-            location: "Stanford CA",
-            venue: "Bing Concert Hall",
-        }
-    ]
+    useEffect(() => {
+        Promise.all([
+            getItems('recs', ['featured', '==', true], 1),
+            getItems('audios', ['featured', '==', true], 1),
+            getItems('videos', ['featured', '==', true], 1),
+            getItems('events', ['dateTime', '<', new Date()], 3, ['dateTime', 'desc']),
+        ])
+            .then(([featuredRec, featuredAudio, featuredVideo, featuredEvents]) => {
+                setRec(...featuredRec);
+                setVideo(...featuredVideo);
+                setAudio(...featuredAudio);
+                setEvents(featuredEvents);
+            })
+            .catch(console.error);
+    }, []);
 
     return (
         <>
@@ -77,7 +48,7 @@ const Home = () => {
             <Container fluid className="bg-dark text-white py-5 snaptarget mt-3">
                 <Container>
                     <h3 className="pb-3">Upcoming events</h3>
-                    {events
+                    {events.length
                         ?
                         <>
                             <EventsTable events={events} />
@@ -113,7 +84,7 @@ const Home = () => {
                     </Col>}
                 </Row>
             </Container>
-            <EventModal event={events[0]} show={false} />
+            <EventModal />
         </>
     );
 };

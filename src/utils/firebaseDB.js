@@ -1,5 +1,5 @@
 import { getDocs, collection, query, where, limit, orderBy } from 'firebase/firestore';
-import db from './firebaseInit';
+import { db } from './firebaseInit';
 
 function getItems(collectionName, queryOptions, limitNum, order) {
     const queryParams = [

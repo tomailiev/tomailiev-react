@@ -114,7 +114,6 @@ const Contact = () => {
                     </FormikForm>
                 )}
             </Formik>
-            <div className="py-5"></div>
         </Container>
     );
 };

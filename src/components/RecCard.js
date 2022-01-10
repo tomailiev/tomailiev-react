@@ -1,8 +1,8 @@
-import { Card } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 
 const RecCard = ({ rec }) => {
     return (
-        <Card className="m-5 disco-card">
+        <Card as={Col} className="m-4 disco-card">
             <div className="img-restrain">
                 <a href={rec.infoUrl} target="_blank" rel="noreferrer">
                     <Card.Img className="card-img-top" src={rec.imageUrl} alt="Card image cap" />
