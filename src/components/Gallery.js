@@ -1,10 +1,4 @@
-import { Container, Image } from "react-bootstrap"
-import { Swiper, SwiperSlide } from "swiper/react";
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
-import { EffectFade, Navigation, Pagination } from "swiper";
+import { Carousel, Container, Image } from "react-bootstrap"
 import { useContext, useEffect, useState } from "react";
 import { getItems } from "../utils/firebaseDB";
 import getStorageUrl from "../utils/firebaseStorage";
@@ -14,6 +8,7 @@ const Gallery = () => {
 
     const { isLoading, setIsLoading } = useContext(LoadingContext);
     const [images, setImages] = useState(null);
+
 
     useEffect(() => {
         setIsLoading(true);
@@ -33,25 +28,17 @@ const Gallery = () => {
     }, []);
 
     return (
-        <Container className="py-2">
+        <Container fluid className="py-2">
             <h1>Photos</h1>
-            <Container className="bg-dark">
-                <Swiper
-                    modules={[Navigation, Pagination, EffectFade]}
-                    onSlideChange={() => console.log('slide change')}
-                    centeredSlides
-                    navigation
-                    pagination
-                >
+            <Container fluid className="bg-dark" style={{ height: '100vh', width: '100%', }}>
+                <Carousel indicators={false} fade>
                     {images && !isLoading && images.map(x => (
-                        <SwiperSlide key={x}>
-                            <Image
-                                fluid
-                                src={x} />
+                        <Carousel.Item key={x}>
+                            <Image src={x} />
                             {/* <div className="text-light">{x.caption}</div> */}
-                        </SwiperSlide>
+                        </Carousel.Item>
                     ))}
-                </Swiper>
+                </Carousel>
             </Container>
         </Container >
     );

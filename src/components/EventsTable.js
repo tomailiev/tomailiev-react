@@ -14,7 +14,7 @@ const EventsTable = ({ events, theme }) => {
                 </tr>
             </thead>
             <tbody>
-                {events.map(x => <Event key={x.id} event={x} />)}
+                {events.map(x => <Event key={x.id} event={x} theme={theme} />)}
             </tbody>
         </Table>
     );

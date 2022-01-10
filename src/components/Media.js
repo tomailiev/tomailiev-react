@@ -16,7 +16,7 @@ const Media = () => {
 
     useEffect(() => {
         setIsLoading(true)
-        getItems(mediaType)
+        getItems(mediaType, null, 10, ['featured', 'desc'])
             .then(items => {
                 setIsLoading(false);
                 setMediaItems(items);
