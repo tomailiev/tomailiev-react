@@ -1,6 +1,6 @@
 import { Carousel, Container, Image } from "react-bootstrap"
 import { useContext, useEffect, useState } from "react";
-import { getItems } from "../utils/firebaseDB";
+// import { getItems } from "../utils/firebaseDB";
 import getStorageUrl from "../utils/firebaseStorage";
 import LoadingContext from "../context/loadingContext";
 
@@ -25,7 +25,7 @@ const Gallery = () => {
         //     .then(docs => {
         //         setImages(docs);
         //     })
-    }, []);
+    }, [setIsLoading]);
 
     return (
         <Container fluid className="py-2">

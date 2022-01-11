@@ -1,4 +1,4 @@
-import { getDocs, collection, query, where, limit, orderBy } from 'firebase/firestore';
+import { getDocs, collection, query, where, limit, orderBy, addDoc } from 'firebase/firestore';
 import { db } from './firebaseInit';
 
 function getItems(collectionName, queryOptions, limitNum, order) {
@@ -22,4 +22,9 @@ function getItems(collectionName, queryOptions, limitNum, order) {
         });
 }
 
-export { getItems };
+function uploadItem(collectionName, docData) {
+    return addDoc(collection(db, collectionName), docData)
+        // .then(docRef => console.log(docRef.id))
+}
+
+export { getItems, uploadItem };

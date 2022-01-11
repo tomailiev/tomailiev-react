@@ -2,10 +2,12 @@ import { Button, Container, Row, Form } from "react-bootstrap";
 import { Formik, Form as FormikForm, ErrorMessage, Field } from 'formik';
 import contactFormSchema from "../utils/yupSchema";
 import sendEmail from "../utils/firebaseEmail";
+import { uploadItem } from "../utils/firebaseDB";
 
 const Contact = () => {
     function handleSubmission(values, { setSubmitting, resetForm }) {
-        sendEmail(values)
+        // sendEmail(values)
+        uploadItem('messages', values)
             .then(res => {
                 console.log(res);
                 setSubmitting(false);

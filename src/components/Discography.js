@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { CardGroup, Col, Container, Row } from "react-bootstrap";
+import { CardGroup, Container, Row } from "react-bootstrap";
 import LoadingContext from "../context/loadingContext";
 import { getItems } from "../utils/firebaseDB";
 import RecCard from "./RecCard";
