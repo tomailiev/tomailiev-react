@@ -23,7 +23,7 @@ const Discography = () => {
     }, [setIsLoading]);
 
     return (
-        <Container className="py-2">
+        <Container className="py-5">
             <h1 className="pagetitle text-capitalize">Recordings</h1>
             {recs?.length && !isLoading
                 ? <Row xl={4} lg={3} md={2} sm={1} xs={1}>

@@ -9,4 +9,8 @@ function getStorageUrl(location) {
     // return getDownloadURL(ref(storage, location));
 }
 
-export default getStorageUrl;
+function getLink(fbRef) {
+    return getDownloadURL(ref(storage, fbRef))
+}
+
+export { getStorageUrl, getLink };

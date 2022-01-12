@@ -3,25 +3,25 @@ import { LinkContainer } from "react-router-bootstrap";
 
 const Header = () => {
     return (
-        <header className="text-capitalize snaptarget">
-            <Navbar expand="lg" bg="light">
-                <Container>
+        <header className="text-capitalize text-white snaptarget">
+            <Navbar variant="dark" expand="lg" style={{position: 'absolute', left: 0, top: 0, minWidth: '100%'}} className="text-white">
+                <Container fluid>
                     <LinkContainer to="/">
                         <Navbar.Brand>Toma Iliev</Navbar.Brand>
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="navbarSupportedContent" label="Toggle navigation" />
                     <Navbar.Collapse id="navbarSupportedContent" className="justify-content-md-end">
                         <Nav>
-                            <LinkContainer to="/">
+                            <LinkContainer className="p-3" to="/">
                                 <Nav.Link>home</Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to="about">
+                            <LinkContainer className="p-3" to="about">
                                 <Nav.Link>about</Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to="calendar">
+                            <LinkContainer className="p-3" to="calendar">
                                 <Nav.Link>calendar</Nav.Link>
                             </LinkContainer>
-                            <NavDropdown title="media" id="navbarScrollingDropdown">
+                            <NavDropdown className="p-2" title="media" id="navbarScrollingDropdown">
                                 <LinkContainer to="photos">
                                     <NavDropdown.Item>photos</NavDropdown.Item>
                                 </LinkContainer>
@@ -33,10 +33,10 @@ const Header = () => {
                                     <NavDropdown.Item>video</NavDropdown.Item>
                                 </LinkContainer>
                             </NavDropdown>
-                            <LinkContainer to="disco">
+                            <LinkContainer className="p-3" to="disco">
                                 <Nav.Link>discography</Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to="contact">
+                            <LinkContainer className="p-3" to="contact">
                                 <Nav.Link>contact</Nav.Link>
                             </LinkContainer>
                         </Nav>

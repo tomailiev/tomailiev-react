@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Button, Card, Container, Modal, Row } from "react-bootstrap"
 import EventContext from "../context/eventContext";
+import createGCalLink from "../utils/gCalendarUtil";
 import Iframe from "./Iframe"
 
 const EventModal = () => {
@@ -9,6 +10,7 @@ const EventModal = () => {
     function handleClose() {
         setEvent(null);
     }
+
 
     return (
         event && <Modal id="eventModal" show={!!event} onHide={handleClose}>
@@ -38,7 +40,12 @@ const EventModal = () => {
             </Modal.Body>
             <Modal.Footer>
                 <Button size="sm" variant="dark" onClick={handleClose}>Close</Button>
-                <Button size="sm" variant="dark" href="" target="_blank" rel="nofollow">Add to calendar</Button>
+                <Button
+                    size="sm"
+                    variant="dark"
+                    href={createGCalLink(event)}
+                    target="_blank"
+                    rel="nofollow">Add to calendar</Button>
             </Modal.Footer>
             {/* </div> */}
             {/* </Modal.Dialog> */}

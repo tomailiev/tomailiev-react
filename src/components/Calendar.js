@@ -9,7 +9,7 @@ const Calendar = () => {
     const [events, setEvents] = useState(null);
 
     useEffect(() => {
-        getItems('events', ['dateTime', '<', new Date()], 10, ['dateTime', 'desc'])
+        getItems('events', ['dateTime', '>=', new Date()], 10, ['dateTime', 'asc'])
             .then(items => {
                 setEvents(items);
             })

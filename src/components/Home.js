@@ -21,7 +21,7 @@ const Home = () => {
             getItems('recs', ['featured', '==', true], 1),
             getItems('audios', ['featured', '==', true], 1),
             getItems('videos', ['featured', '==', true], 1),
-            getItems('events', ['dateTime', '<', new Date()], 3, ['dateTime', 'desc']),
+            getItems('events', ['dateTime', '>=', new Date()], 3, ['dateTime', 'asc']),
         ])
             .then(([featuredRec, featuredAudio, featuredVideo, featuredEvents]) => {
                 setRec(...featuredRec);
