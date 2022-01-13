@@ -1,4 +1,4 @@
-import { Button, Container, Row, Form } from "react-bootstrap";
+import { Button, Container, Row, Form, Col } from "react-bootstrap";
 import { Formik, Form as FormikForm, ErrorMessage, Field } from 'formik';
 import contactFormSchema from "../utils/yupSchema";
 import { uploadItem } from "../utils/firebaseDB";
@@ -28,12 +28,12 @@ const Contact = () => {
                 validationSchema={contactFormSchema}
                 onSubmit={handleSubmission}
             >
-                {({ isSubmitting, values, errors, touched, handleChange, handleBlur }) => (
+                {({ isSubmitting, values, errors, touched, handleChange, handleBlur, resetForm }) => (
                     <FormikForm>
                         <Row>
                             <Field name="name" >
                                 {() => (
-                                    <Form.Group className="col-sm-6">
+                                    <Form.Group className="col-sm-6 py-3">
                                         <Form.Label> Name:</Form.Label>
                                         <Form.Control
                                             name="name"
@@ -42,15 +42,15 @@ const Contact = () => {
                                             onBlur={handleBlur}
                                             isInvalid={touched.name && errors.name}
                                             type="text"
-                                            placeholder="Enter your name"
+                                            placeholder="Your name"
                                         />
-                                        <ErrorMessage name="name" component="div" />
+                                        <ErrorMessage name="name" component="div" style={{position: 'absolute', color: '#dc3545'}} />
                                     </Form.Group>
                                 )}
                             </Field>
                             <Field>
                                 {() => (
-                                    <Form.Group className="col-sm-6">
+                                    <Form.Group className="col-sm-6 py-3">
                                         <Form.Label> Email:</Form.Label>
                                         <Form.Control
                                             id="email"
@@ -60,9 +60,9 @@ const Contact = () => {
                                             onBlur={handleBlur}
                                             isInvalid={(touched.email && errors.email)}
                                             type="email"
-                                            placeholder="Enter your email"
+                                            placeholder="Your email"
                                         />
-                                        <ErrorMessage name="email" component="div" />
+                                        <ErrorMessage name="email" component="div" style={{position: 'absolute', color: '#dc3545'}} />
                                     </Form.Group>
                                 )}
                             </Field>
@@ -70,7 +70,7 @@ const Contact = () => {
                         <Row>
                             <Field>
                                 {() => (
-                                    <Form.Group className="col-sm-12">
+                                    <Form.Group className="col-sm-12 py-3">
                                         <Form.Label> Subject:</Form.Label>
                                         <Form.Control
                                             id="subject"
@@ -79,10 +79,10 @@ const Contact = () => {
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             isInvalid={(touched.subject && errors.subject)}
-                                            type="subject"
+                                            type="text"
                                             placeholder="Enter subject"
                                         />
-                                        <ErrorMessage name="subject" component="div" />
+                                        <ErrorMessage name="subject" component="div" style={{position: 'absolute', color: '#dc3545'}} />
                                     </Form.Group>
                                 )}
                             </Field>
@@ -90,7 +90,7 @@ const Contact = () => {
                         <Row>
                             <Field>
                                 {() => (
-                                    <Form.Group className="col-sm-12">
+                                    <Form.Group className="col-sm-12 py-3">
                                         <Form.Label> Message:</Form.Label>
                                         <Form.Control
                                             name="message"
@@ -102,15 +102,20 @@ const Contact = () => {
                                             type="textarea"
                                             maxLength="500"
                                             rows="6"
-                                            placeholder="message"
+                                            placeholder="Enter message"
                                         />
-                                        <ErrorMessage name="message" component="div" />
+                                        <ErrorMessage name="message" component="div" style={{position: 'absolute', color: '#dc3545'}} />
                                     </Form.Group>
                                 )}
                             </Field>
                         </Row>
-                        <Row>
-                            <Button type="submit" disabled={isSubmitting} variant="dark">Send</Button>
+                        <Row className="py-3">
+                            <Col>
+                                <Button type="button" disabled={isSubmitting} onClick={resetForm} variant="outline-dark">Reset</Button>
+                            </Col>
+                            <Col className="text-end">
+                                <Button type="submit" disabled={isSubmitting} variant="outline-dark">Send</Button>
+                            </Col>
                         </Row>
                     </FormikForm>
                 )}

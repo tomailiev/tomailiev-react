@@ -28,7 +28,7 @@ const Discography = () => {
             <Spacer height={4} />
             <h1 className="pagetitle text-capitalize">Recordings</h1>
             {recs?.length && !isLoading
-                ? <Row xl={4} lg={3} md={2} sm={1} xs={1}>
+                ? <Row xl={4} lg={3} md={1} sm={1} xs={1} className="justify-content-between">
                     {/* <CardGroup> */}
                         {recs.map(x =><RecCard key={x.id} rec={x} />)}
                     {/* </CardGroup> */}

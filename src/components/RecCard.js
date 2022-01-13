@@ -2,7 +2,7 @@ import { Card, Col } from "react-bootstrap";
 
 const RecCard = ({ rec }) => {
     return (
-        <Card as={Col} className=" disco-card">
+        <Card as={Col} className="disco-card px-0 m-lg-4 mx-md-0 my-md-4">
             <div className="img-restrain">
                 <a href={rec.infoUrl} target="_blank" rel="noreferrer">
                     <Card.Img className="card-img-top" src={rec.imageUrl} alt="Card image cap" />

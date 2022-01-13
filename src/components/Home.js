@@ -50,7 +50,7 @@ const Home = () => {
             <Container className="section-container snaptarget">
                 <Row>
                     <BioMini />
-                    {rec && <div className="col-md-3 d-md-block mx-5">
+                    {rec && <div className="col-md-3 d-md-block mx-xl-4">
                         <h3 className="my-3">Featured recording</h3>
                         <RecCardMini rec={rec} />
                     </div>}
