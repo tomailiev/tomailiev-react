@@ -1,8 +1,9 @@
 import { Carousel, Container, Image } from "react-bootstrap"
 import { useContext, useEffect, useState } from "react";
 import { getItems } from "../utils/firebaseDB";
-import { getStorageUrl, getLink } from "../utils/firebaseStorage";
+import { getLink } from "../utils/firebaseStorage";
 import LoadingContext from "../context/loadingContext";
+import Spacer from "./Spacer";
 
 const Gallery = () => {
 
@@ -30,6 +31,7 @@ const Gallery = () => {
 
     return (
         <Container fluid className="py-2">
+            <Spacer height={5} />
             <h1>Photos</h1>
             <Container fluid className="bg-dark" style={{ height: '100vh', width: '100%', }}>
                 {!!images && !isLoading && <Carousel indicators={false} interval={null} fade>

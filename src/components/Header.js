@@ -1,10 +1,21 @@
+import { useContext, useState } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap";
+import NavbarThemeContext from "../context/navbarThemeContext";
 
 const Header = () => {
+    const { navbarTheme } = useContext(NavbarThemeContext);
+    const [navbarBG, setNavbarBG] = useState(null);
+
+    function toggleNavbarBG(expanded) {
+        expanded
+            ? setNavbarBG(navbarTheme ? 'dark' : 'light')
+            : setNavbarBG(null);
+    }
+
     return (
-        <header className="text-capitalize text-white snaptarget">
-            <Navbar variant="dark" expand="lg" style={{position: 'absolute', left: 0, top: 0, minWidth: '100%'}} className="text-white">
+        <header className="text-capitalize text-white snaptarget" style={{ position: 'absolute', left: 0, top: 0, minWidth: '100%', zIndex: 1000}}>
+            <Navbar onToggle={toggleNavbarBG} bg={navbarBG} variant={navbarTheme || 'light'} expand="lg" collapseOnSelect className="text-white">
                 <Container fluid>
                     <LinkContainer to="/">
                         <Navbar.Brand>Toma Iliev</Navbar.Brand>
@@ -25,7 +36,6 @@ const Header = () => {
                                 <LinkContainer to="photos">
                                     <NavDropdown.Item>photos</NavDropdown.Item>
                                 </LinkContainer>
-
                                 <LinkContainer to="audios">
                                     <NavDropdown.Item>audio</NavDropdown.Item>
                                 </LinkContainer>

@@ -1,4 +1,4 @@
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Container, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 const RecCardMini = ({ rec }) => {
@@ -10,12 +10,16 @@ const RecCardMini = ({ rec }) => {
                 </a>
             </div>
             <Card.Body className="card-home">
-                <Button href={rec.cdUrl} rel="noreferrer" target="_blank" size="sm" variant="outline-dark">
-                    Buy CD
-                </Button>
-                <LinkContainer to="/disco">
-                    <Button size="sm" variant="outline-dark">More CDs</Button>
-                </LinkContainer>
+                <Container fluid>
+                    <Row>
+                        <Button href={rec.cdUrl} rel="noreferrer" target="_blank" size="sm" variant="outline-dark" className="my-2">
+                            Buy CD
+                        </Button>
+                        <LinkContainer to="/disco">
+                            <Button size="sm" variant="outline-dark">More CDs</Button>
+                        </LinkContainer>
+                    </Row>
+                </Container>
             </Card.Body>
         </Card>
 

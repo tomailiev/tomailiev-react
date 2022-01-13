@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Button, Col, Container, Row } from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap"
+import NavbarThemeContext from "../context/navbarThemeContext"
 import { getItems } from "../utils/firebaseDB"
 import Banner from "./Banner"
 import BioMini from "./BioMini"
@@ -11,10 +12,20 @@ import RecCardMini from "./RecCardMini"
 
 const Home = () => {
 
+    const { setNavbarTheme } = useContext(NavbarThemeContext);
+
     const [rec, setRec] = useState(null);
     const [audio, setAudio] = useState(null);
     const [video, setVideo] = useState(null);
     const [events, setEvents] = useState([]);
+
+    useEffect(() => {
+        setNavbarTheme('dark');
+
+        return () => {
+            setNavbarTheme(null);
+        };
+    }, [setNavbarTheme]);
 
     useEffect(() => {
         Promise.all([
@@ -35,16 +46,16 @@ const Home = () => {
     return (
         <>
             <Banner />
-            <div className="spacer"></div>
-            <div className="container section-container snaptarget">
+            {/* <Spacer vh={70} /> */}
+            <Container className="section-container snaptarget">
                 <Row>
                     <BioMini />
-                    {rec && <div className="col-md-3 border-left d-md-block">
+                    {rec && <div className="col-md-3 d-md-block mx-5">
                         <h3 className="my-3">Featured recording</h3>
                         <RecCardMini rec={rec} />
                     </div>}
                 </Row>
-            </div>
+            </Container>
             <Container fluid className="bg-dark text-white py-5 snaptarget mt-3">
                 <Container>
                     <h3 className="pb-3">Upcoming events</h3>
@@ -53,7 +64,7 @@ const Home = () => {
                         <>
                             <EventsTable events={events} />
                             <LinkContainer to="/calendar">
-                                <Button size="sm" variant="light">Continue browsing &#187;</Button>
+                                <Button size="sm" variant="outline-light">Continue browsing &#187;</Button>
                             </LinkContainer>
                         </>
                         : <h4>No events found <i className="fas fa-heart-broken"></i></h4>}
@@ -64,9 +75,9 @@ const Home = () => {
                 <Row className="py-3">
                     {audio && <Col className="md-6">
                         <MediaCardMini media={audio} />
-                        <div style={{ width: 'inherit' }} className="mx-auto pt-3 pb-5">
+                        <div className="mx-auto pt-3 pb-5">
                             <LinkContainer to="/audios">
-                                <Button size="sm" variant="dark">
+                                <Button size="sm" variant="outline-dark">
                                     Continue listening &#187;
                                 </Button>
                             </LinkContainer>
@@ -74,9 +85,9 @@ const Home = () => {
                     </Col>}
                     {video && <Col className="md-6">
                         <MediaCardMini media={video} />
-                        <div style={{ width: 'inherit' }} className="mx-auto pt-3 pb-5">
+                        <div className="mx-auto pt-3 pb-5">
                             <LinkContainer to="/videos">
-                                <Button size="sm" variant="dark">
+                                <Button size="sm" variant="outline-dark">
                                     Continue watching &#187;
                                 </Button>
                             </LinkContainer>

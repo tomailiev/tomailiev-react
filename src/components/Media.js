@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import LoadingContext from "../context/loadingContext";
 import { getItems } from "../utils/firebaseDB";
 import Iframe from "./Iframe";
+import Spacer from "./Spacer";
 
 const Media = () => {
 
@@ -29,10 +30,11 @@ const Media = () => {
 
     return (
         <Container id={mediaType} className="p-2">
+            <Spacer height={5} />
             <h1 className="pagetitle text-capitalize">{mediaType}</h1>
             {mediaItems?.length && !isLoading
                 ? mediaItems.map(x => (
-                    <Row key={x.id} className="py-3">
+                    <Row key={x.id} className="py-5">
                         <div className="col-md-4">
                             <Iframe media={x} />
                         </div>

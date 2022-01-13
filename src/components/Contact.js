@@ -1,12 +1,11 @@
 import { Button, Container, Row, Form } from "react-bootstrap";
 import { Formik, Form as FormikForm, ErrorMessage, Field } from 'formik';
 import contactFormSchema from "../utils/yupSchema";
-import sendEmail from "../utils/firebaseEmail";
 import { uploadItem } from "../utils/firebaseDB";
+import Spacer from "./Spacer";
 
 const Contact = () => {
     function handleSubmission(values, { setSubmitting, resetForm }) {
-        // sendEmail(values)
         uploadItem('messages', values)
             .then(res => {
                 console.log(res);
@@ -21,7 +20,7 @@ const Contact = () => {
 
     return (
         <Container className="col-md-6 form-container p-5">
-            <Row className="py-5"></Row>
+            <Spacer height={5} />
             <h2>Get in touch</h2>
             <p> Please fill out all fields. </p>
             <Formik

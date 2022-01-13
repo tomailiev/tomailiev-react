@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap"
 import { getItems } from "../utils/firebaseDB";
 import EventModal from "./EventModal";
 import EventsTable from "./EventsTable";
+import Spacer from "./Spacer";
 
 
 const Calendar = () => {
@@ -18,6 +19,7 @@ const Calendar = () => {
 
     return (
         <>
+            <Spacer height={4} />
             <Container id="eventHolder" className="py-5">
                 <h1 className="py-2">Performances</h1>
                 {events && events?.length
