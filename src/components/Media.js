@@ -29,7 +29,7 @@ const Media = () => {
     }, [mediaType, setIsLoading]);
 
     return (
-        <Container id={mediaType} className="p-2">
+        <Container id={mediaType} className="py-2">
             <Spacer height={5} />
             <h1 className="pagetitle text-capitalize">{mediaType}</h1>
             {mediaItems?.length && !isLoading

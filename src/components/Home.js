@@ -50,10 +50,10 @@ const Home = () => {
             <Container className="section-container snaptarget">
                 <Row>
                     <BioMini />
-                    {rec && <div className="col-md-3 d-md-block mx-xl-4">
+                    {rec && <Col md={{span: 3, offset: 1}}>
                         <h3 className="my-3">Featured recording</h3>
                         <RecCardMini rec={rec} />
-                    </div>}
+                    </Col>}
                 </Row>
             </Container>
             <Container fluid className="bg-dark text-white py-5 snaptarget mt-3">
@@ -73,7 +73,7 @@ const Home = () => {
             <Container className="py-5 bg-light snaptarget">
                 <h3>Featured media</h3>
                 <Row className="py-3">
-                    {audio && <Col className="md-6">
+                    {audio && <Col md={12} lg={4}>
                         <MediaCardMini media={audio} />
                         <div className="mx-auto pt-3 pb-5">
                             <LinkContainer to="/audios">
@@ -83,7 +83,7 @@ const Home = () => {
                             </LinkContainer>
                         </div>
                     </Col>}
-                    {video && <Col className="md-6">
+                    {video && <Col md={12} lg={{ span: 4, offset: 4 }}>
                         <MediaCardMini media={video} />
                         <div className="mx-auto pt-3 pb-5">
                             <LinkContainer to="/videos">

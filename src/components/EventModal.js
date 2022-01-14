@@ -17,7 +17,7 @@ const EventModal = () => {
             {/* <Modal.Dialog centered> */}
             {/* <div className="modal-content"> */}
             <Modal.Header closeButton>
-                <Modal.Title id="exampleModalLabel"></Modal.Title>
+                <Modal.Title>{event.eventName}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Container fluid>
@@ -28,10 +28,15 @@ const EventModal = () => {
                         </div>
                         <div className="col-md-5">
                             <Card>
-                                <Card.Body>
-                                    <Card.Title>{event.eventName}</Card.Title>
+                                <Card.Body className="d-grid gap-2">
                                     <Card.Text>{event.groupName}</Card.Text>
-                                    <Button size="sm" variant="dark" id="tix" href={event.eventUrl} target="blank">Tickets</Button>
+                                    <Card.Text>{`${event.date} - ${event.time}`}</Card.Text>
+                                    <Button
+                                        size="sm"
+                                        variant="outline-dark"
+                                        href={createGCalLink(event)}
+                                        target="_blank"
+                                        rel="nofollow">Add to calendar</Button>
                                 </Card.Body>
                             </Card>
                         </div>
@@ -39,13 +44,8 @@ const EventModal = () => {
                 </Container>
             </Modal.Body>
             <Modal.Footer>
-                <Button size="sm" variant="dark" onClick={handleClose}>Close</Button>
-                <Button
-                    size="sm"
-                    variant="dark"
-                    href={createGCalLink(event)}
-                    target="_blank"
-                    rel="nofollow">Add to calendar</Button>
+                <Button size="sm" variant="outline-dark" onClick={handleClose}>Close</Button>
+                <Button size="sm" variant="outline-dark" id="tix" href={event.eventUrl} target="blank">Tickets</Button>
             </Modal.Footer>
             {/* </div> */}
             {/* </Modal.Dialog> */}

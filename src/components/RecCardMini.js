@@ -3,7 +3,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 const RecCardMini = ({ rec }) => {
     return (
-        <Card style={{ width: '16rem' }}>
+        <Card>
             <div className="img-restrain">
                 <a href={rec.infoUrl} target="_blank" rel="noreferrer">
                     <Card.Img variant="top" src={rec.imageUrl} alt="CD cover" />

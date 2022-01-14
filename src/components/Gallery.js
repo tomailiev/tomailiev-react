@@ -38,10 +38,10 @@ const Gallery = () => {
     }, [setIsLoading]);
 
     return (
-        <Container fluid className="py-2">
+        <Container fluid className="py-2 px-0">
             <Spacer height={5} />
             <h1>Photos</h1>
-            <Container fluid className="bg-dark" style={{ height: '100vh', width: '100%', }}>
+            <Container fluid className="bg-dark px-0" style={{ height: '100vh'}}>
                 {!!images && !isLoading && (
                     <Carousel indicators={false} interval={null}>
                         {images.map((x, i) => (

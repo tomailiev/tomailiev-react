@@ -3,7 +3,7 @@ import Iframe from "./Iframe";
 
 const MediaCardMini = ({ media }) => {
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card>
             <Iframe media={media} />
             <Card.Body>
                 <Card.Text>{media.title}</Card.Text>
