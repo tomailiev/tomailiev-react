@@ -4,10 +4,12 @@ import { getItems } from "../utils/firebaseDB";
 import { getLink } from "../utils/firebaseStorage";
 import LoadingContext from "../context/loadingContext";
 import Spacer from "./Spacer";
+import NotificationContext from "../context/notificationContext";
 
 const Gallery = () => {
 
     const { isLoading, setIsLoading } = useContext(LoadingContext);
+    const { setNotification } = useContext(NotificationContext);
     const [images, setImages] = useState(null);
     const [caps, setCaps] = useState([]);
 
@@ -18,7 +20,7 @@ const Gallery = () => {
         maxWidth: '100%',
         maxHeight: '100%',
         transform: 'translate(-50%, -50%)',
-      }
+    }
 
     useEffect(() => {
         setIsLoading(true);
@@ -32,20 +34,21 @@ const Gallery = () => {
                 setIsLoading(false);
             })
             .catch(err => {
-                console.error(err);
                 setIsLoading(false);
-            })
-    }, [setIsLoading]);
+                console.log(err.code);
+                setNotification({ type: 'warning', message: 'Something went wrong. Check connection and try again' });
+            });
+    }, [setIsLoading, setNotification]);
 
     return (
         <Container fluid className="py-2 px-0">
             <Spacer height={5} />
             <h1>Photos</h1>
-            <Container fluid className="bg-dark px-0" style={{ height: '100vh'}}>
+            <Container fluid className="bg-dark px-0" style={{ height: '100vh' }}>
                 {!!images && !isLoading && (
                     <Carousel indicators={false} interval={null}>
                         {images.map((x, i) => (
-                            <Carousel.Item key={x} style={{height: '100vh'}}>
+                            <Carousel.Item key={x} style={{ height: '100vh' }}>
                                 <Image src={x} style={imgCSS} />
                                 <Carousel.Caption>
                                     <p className="text-light bg-dark">{caps[i]}</p>

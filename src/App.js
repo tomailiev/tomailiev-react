@@ -19,7 +19,7 @@ import Toaster from './components/Toaster';
 function App() {
   const [event, setEvent] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [notification, setNotification] = useState('');
+  const [notification, setNotification] = useState(null);
   const [navbarTheme, setNavbarTheme] = useState(null);
 
   return (

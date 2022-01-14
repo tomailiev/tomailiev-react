@@ -2,13 +2,15 @@ import { useContext, useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import LoadingContext from "../context/loadingContext";
+import NotificationContext from "../context/notificationContext";
 import { getItems } from "../utils/firebaseDB";
 import Iframe from "./Iframe";
 import Spacer from "./Spacer";
 
 const Media = () => {
 
-    const { isLoading, setIsLoading } = useContext(LoadingContext)
+    const { isLoading, setIsLoading } = useContext(LoadingContext);
+    const { setNotification } = useContext(NotificationContext);
     const [mediaItems, setMediaItems] = useState(null);
 
     const { pathname } = useLocation();
@@ -24,9 +26,10 @@ const Media = () => {
             })
             .catch(err => {
                 setIsLoading(false);
-                console.error(err);
+                console.log(err.code);
+                setNotification({ type: 'warning', message: 'Something went wrong. Check connection and try again' });
             });
-    }, [mediaType, setIsLoading]);
+    }, [mediaType, setIsLoading, setNotification]);
 
     return (
         <Container id={mediaType} className="py-2">

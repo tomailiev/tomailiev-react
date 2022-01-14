@@ -5,22 +5,26 @@ import { uploadItem } from "../utils/firebaseDB";
 import Spacer from "./Spacer";
 import { useContext } from "react";
 import NotificationContext from "../context/notificationContext";
+import LoadingContext from "../context/loadingContext";
 
 const Contact = () => {
 
+    const { setIsLoading } = useContext(LoadingContext);
     const { setNotification } = useContext(NotificationContext);
 
     function handleSubmission(values, { setSubmitting, resetForm }) {
         uploadItem('messages', values)
             .then(res => {
-                setNotification('Message sent successfully');
+                setNotification({ type: 'success', message: 'Message sent successfully' });
                 console.log(res);
                 setSubmitting(false);
                 resetForm();
             })
-            .catch(e => {
-                console.error(e);
+            .catch(err => {
+                setIsLoading(false);
                 setSubmitting(false);
+                console.log(err.code);
+                setNotification({ type: 'warning', message: 'Something went wrong. Your message was NOT sent. Please try again' });
             });
     }
 
