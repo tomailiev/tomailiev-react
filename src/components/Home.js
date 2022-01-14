@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { Button, Col, Container, Row } from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap"
 import NavbarThemeContext from "../context/navbarThemeContext"
+import NotificationContext from "../context/notificationContext"
 import { getItems } from "../utils/firebaseDB"
 import Banner from "./Banner"
 import BioMini from "./BioMini"
@@ -13,6 +14,7 @@ import RecCardMini from "./RecCardMini"
 const Home = () => {
 
     const { setNavbarTheme } = useContext(NavbarThemeContext);
+    const { setNotification } = useContext(NotificationContext);
 
     const [rec, setRec] = useState(null);
     const [audio, setAudio] = useState(null);
@@ -28,20 +30,26 @@ const Home = () => {
     }, [setNavbarTheme]);
 
     useEffect(() => {
-        Promise.all([
+        Promise.allSettled([
             getItems('recs', ['featured', '==', true], 1),
             getItems('audios', ['featured', '==', true], 1),
             getItems('videos', ['featured', '==', true], 1),
             getItems('events', ['dateTime', '>=', new Date()], 3, ['dateTime', 'asc']),
         ])
-            .then(([featuredRec, featuredAudio, featuredVideo, featuredEvents]) => {
-                setRec(...featuredRec);
-                setVideo(...featuredVideo);
-                setAudio(...featuredAudio);
-                setEvents(featuredEvents);
+            .then((results) => {
+                const [featuredRec, featuredAudio, featuredVideo, featuredEvents] = results;
+                featuredRec.value && setRec(...featuredRec.value);
+                featuredVideo.value && setVideo(...featuredVideo.value);
+                featuredAudio.value && setAudio(...featuredAudio.value);
+                featuredEvents.value && setEvents(featuredEvents.value);
+                if (results.find(x => x.status === 'rejected')) {
+                    throw new Error('Something went (mildly) wrong');
+                }
             })
-            .catch(console.error);
-    }, []);
+            .catch(err => {
+                setNotification({ type: 'warning', message: err.message });
+            });
+    }, [setNotification]);
 
     return (
         <>
@@ -50,7 +58,7 @@ const Home = () => {
             <Container className="section-container snaptarget">
                 <Row>
                     <BioMini />
-                    {rec && <Col md={{span: 3, offset: 1}}>
+                    {rec && <Col md={{ span: 3, offset: 1 }}>
                         <h3 className="my-3">Featured recording</h3>
                         <RecCardMini rec={rec} />
                     </Col>}
