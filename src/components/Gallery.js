@@ -1,4 +1,4 @@
-import { Carousel, Container, Image, Row } from "react-bootstrap"
+import { Carousel, Container, Image } from "react-bootstrap"
 import { useContext, useEffect, useState } from "react";
 import { getItems } from "../utils/firebaseDB";
 import { getLink } from "../utils/firebaseStorage";
