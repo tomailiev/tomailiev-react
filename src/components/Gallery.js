@@ -1,4 +1,4 @@
-import { Carousel, Container, Image } from "react-bootstrap"
+import { Carousel, Container, Image, Row } from "react-bootstrap"
 import { useContext, useEffect, useState } from "react";
 import { getItems } from "../utils/firebaseDB";
 import { getLink } from "../utils/firebaseStorage";
@@ -11,6 +11,14 @@ const Gallery = () => {
     const [images, setImages] = useState(null);
     const [caps, setCaps] = useState([]);
 
+    const imgCSS = {
+        position: 'relative',
+        left: '50%',
+        top: '50%',
+        maxWidth: '100%',
+        maxHeight: '100%',
+        transform: 'translate(-50%, -50%)',
+      }
 
     useEffect(() => {
         setIsLoading(true);
@@ -34,18 +42,21 @@ const Gallery = () => {
             <Spacer height={5} />
             <h1>Photos</h1>
             <Container fluid className="bg-dark" style={{ height: '100vh', width: '100%', }}>
-                {!!images && !isLoading && <Carousel indicators={false} interval={null} fade>
-                    {images.map((x, i) => (
-                        <Carousel.Item key={x}>
-                            <Image src={x} />
-                            <Carousel.Caption>
-                                <p className="text-light">{caps[i]}</p>
-                            </Carousel.Caption>
-                            {/* <div className="text-light">{x.caption}</div> */}
-                        </Carousel.Item>
-                    ))}
-                </Carousel>}
+                {!!images && !isLoading && (
+                    <Carousel indicators={false} interval={null}>
+                        {images.map((x, i) => (
+                            <Carousel.Item key={x} style={{height: '100vh'}}>
+                                <Image src={x} style={imgCSS} />
+                                <Carousel.Caption>
+                                    <p className="text-light bg-dark">{caps[i]}</p>
+                                </Carousel.Caption>
+                                {/* <div className="text-light">{x.caption}</div> */}
+                            </Carousel.Item>
+                        ))}
+                    </Carousel>
+                )}
             </Container>
+            <Spacer height={5} />
         </Container >
     );
 };
