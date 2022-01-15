@@ -49,7 +49,7 @@ const Gallery = () => {
                     <Carousel indicators={false} interval={null}>
                         {images.map((x, i) => (
                             <Carousel.Item key={x} style={{ height: '100vh' }}>
-                                <Image src={x} style={imgCSS} />
+                                <Image loading="lazy" src={x} style={imgCSS} />
                                 <Carousel.Caption>
                                     <p className="text-light bg-dark">{caps[i]}</p>
                                 </Carousel.Caption>

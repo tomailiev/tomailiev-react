@@ -15,7 +15,7 @@ const Footer = () => {
                         </Container>
                     </Row>
                     <Row className="justify-content-center">
-                        <div className="footer-copyright text-center py-3">© 2020 Copyright:
+                        <div className="footer-copyright text-center py-3">© 2020-2022 Copyright:
                             <span className="font-weight-bold"> tomailiev.com</span>
                         </div>
                     </Row>
