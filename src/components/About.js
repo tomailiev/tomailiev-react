@@ -2,6 +2,7 @@ import { Container, Image, Row } from "react-bootstrap";
 import BioFull from "./BioFull";
 import Blockquote from "./Blockquote";
 import Spacer from "./Spacer";
+import bioImage from '../imgs/ver3.jpg';
 
 const About = () => {
     const texts = {
@@ -27,7 +28,7 @@ const About = () => {
                     <div className="col-lg-4">
                         <Image
                             fluid
-                            src="https://tomailiev.com/pics/ver3.jpg"
+                            src={bioImage}
                             className="d-md-block p-3 border aside" />
                         {texts.blockquotes.map((x, i) => <Blockquote blockquote={x} key={i} />)}
                     </div>
