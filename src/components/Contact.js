@@ -13,8 +13,10 @@ const Contact = () => {
     const { setNotification } = useContext(NotificationContext);
 
     function handleSubmission(values, { setSubmitting, resetForm }) {
+        setIsLoading(true);
         uploadItem('messages', values)
             .then(res => {
+                setIsLoading(false);
                 setNotification({ type: 'success', message: 'Message sent successfully' });
                 console.log(res);
                 setSubmitting(false);
