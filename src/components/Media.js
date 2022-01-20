@@ -35,7 +35,7 @@ const Media = () => {
         <Container id={mediaType} className="py-2">
             <Spacer height={5} />
             <h1 className="pagetitle text-capitalize">{mediaType}</h1>
-            {mediaItems?.length && !isLoading
+            {!isLoading && (mediaItems?.length
                 ? mediaItems.map(x => (
                     <Row key={x.id} className="py-5">
                         <div className="col-md-4">
@@ -47,7 +47,7 @@ const Media = () => {
                         </div>
                     </Row>
                 ))
-                : <h4 className="py-2">No {mediaType} found. Please check back later.</h4>
+                : <h4 className="py-2">No {mediaType} found. Please check back later.</h4>)
             }
         </Container>
     );

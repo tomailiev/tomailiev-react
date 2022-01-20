@@ -31,13 +31,13 @@ const Discography = () => {
         <Container className="py-5">
             <Spacer height={4} />
             <h1 className="pagetitle text-capitalize">Recordings</h1>
-            {recs?.length && !isLoading
+            {!isLoading && (recs?.length
                 ? <Row xl={4} lg={3} md={1} sm={1} xs={1} className="justify-content-between">
                     {/* <CardGroup> */}
                     {recs.map(x => <RecCard key={x.id} rec={x} />)}
                     {/* </CardGroup> */}
                 </Row>
-                : <h4 className="py-2">No recordings found. Please check back later.</h4>
+                : <h4 className="py-2">No recordings found. Please check back later.</h4>)
             }
         </Container>
     );
