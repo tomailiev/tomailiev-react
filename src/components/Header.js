@@ -14,7 +14,7 @@ const Header = () => {
     }
 
     return (
-        <header className="text-capitalize text-white snaptarget" style={{ position: 'absolute', left: 0, top: 0, minWidth: '100%', zIndex: 1000}}>
+        <header className="text-capitalize text-white snaptarget" style={{ position: 'absolute', left: 0, top: 0, minWidth: '100%', zIndex: 700}}>
             <Navbar onToggle={toggleNavbarBG} bg={navbarBG} variant={navbarTheme || 'light'} expand="lg" collapseOnSelect className="text-white">
                 <Container fluid>
                     <LinkContainer to="/">

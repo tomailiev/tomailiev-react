@@ -17,7 +17,7 @@ const Event = ({ event, theme }) => {
             </td>
             <td className="d-none d-md-table-cell">{event.location}</td>
             <td className="d-none d-md-table-cell">{event.venue}</td>
-            {theme && <td class="d-none d-md-table-cell">
+            {theme && <td className="d-none d-md-table-cell">
                 <Button size="sm" href={event.eventUrl} target="_blank" variant={theme ? 'outline-dark' : 'outline-light'} className="lite-text">Tickets</Button>
             </td>}
             <td>

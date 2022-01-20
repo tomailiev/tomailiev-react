@@ -27,10 +27,17 @@ const Gallery = () => {
         getItems('images')
             .then(docs => {
                 setCaps(docs.map(x => x.caption));
-                return Promise.all(docs.map(({ imageUrl }) => getLink(imageUrl.replace('https://tomailiev.com/pics', 'images'))));
+                return Promise.allSettled(docs.map(({ imageUrl }) => getLink(imageUrl.replace('https://tomailiev.com/pics', 'images'))));
             })
             .then(pics => {
-                setImages(pics);
+                setImages(pics
+                    .filter((x, i) => {
+                        if (!x.value) {
+                            setCaps(prev => prev.filter((_x, j) => j !== i));
+                        }
+                        return !!x.value;
+                    })
+                    .map(x => x.value));
                 setIsLoading(false);
             })
             .catch(err => {

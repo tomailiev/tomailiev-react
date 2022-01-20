@@ -15,6 +15,7 @@ import LoadingContext from './context/loadingContext';
 import NavbarThemeContext from './context/navbarThemeContext';
 import NotificationContext from './context/notificationContext';
 import Toaster from './components/Toaster';
+import LoadingModal from './components/LoadingModal';
 
 function App() {
   const [event, setEvent] = useState(null);
@@ -30,6 +31,7 @@ function App() {
             <NavbarThemeContext.Provider value={{ navbarTheme, setNavbarTheme }} >
               <Header />
               <Toaster />
+              <LoadingModal />
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="about" element={<About />} />
