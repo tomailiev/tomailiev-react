@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { Button } from "react-bootstrap";
 import EventContext from "../context/eventContext";
+import LanguageContext from "../context/languageContext";
 
 const Event = ({ event, theme }) => {
     const { setEvent } = useContext(EventContext);
+    const { language: { buttons: { calendar } } } = useContext(LanguageContext);
 
     function handleClick() {
         setEvent(event);
@@ -18,11 +20,11 @@ const Event = ({ event, theme }) => {
             <td className="d-none d-md-table-cell">{event.location}</td>
             <td className="d-none d-md-table-cell">{event.venue}</td>
             {theme && <td className="d-none d-md-table-cell">
-                <Button size="sm" href={event.eventUrl} target="_blank" variant={theme ? 'outline-dark' : 'outline-light'} className="lite-text">Tickets</Button>
+                <Button size="sm" href={event.eventUrl} target="_blank" variant={theme ? 'outline-dark' : 'outline-light'} className="lite-text">{calendar.tickets}</Button>
             </td>}
             <td>
                 <Button size="sm" variant={theme ? 'outline-dark' : 'outline-light'} className="lite-text" onClick={handleClick}>
-                    Details
+                    {calendar.details}
                 </Button>
             </td>
         </tr>

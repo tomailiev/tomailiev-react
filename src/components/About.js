@@ -3,23 +3,25 @@ import BioFull from "./BioFull";
 import Blockquote from "./Blockquote";
 import Spacer from "./Spacer";
 import bioImage from '../imgs/ver3.jpg';
-import english from '../text/english.json';
+import { useContext } from "react";
+import LanguageContext from "../context/languageContext";
 
 const About = () => {
-    
+    const { language: { fullBio, titles, blockquotes } } = useContext(LanguageContext);
+
     return (
         <div className="text-dark py-5 bg-light">
             <Spacer height={4} />
             <Container>
-                <h1 className="py-2">About</h1>
+                <h1 className="py-2">{titles.about}</h1>
                 <Row>
-                    <BioFull text={english.fullBio} />
+                    <BioFull text={fullBio} />
                     <div className="col-lg-4">
                         <Image
                             fluid
                             src={bioImage}
                             className="d-md-block p-3 border aside" />
-                        {english.blockquotes.map((x, i) => <Blockquote blockquote={x} key={i} />)}
+                        {blockquotes.map((x, i) => <Blockquote blockquote={x} key={i} />)}
                     </div>
                 </Row>
             </Container>

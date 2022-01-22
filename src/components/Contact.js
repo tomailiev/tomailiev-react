@@ -6,18 +6,20 @@ import Spacer from "./Spacer";
 import { useContext } from "react";
 import NotificationContext from "../context/notificationContext";
 import LoadingContext from "../context/loadingContext";
+import LanguageContext from "../context/languageContext";
 
 const Contact = () => {
 
     const { setIsLoading } = useContext(LoadingContext);
     const { setNotification } = useContext(NotificationContext);
+    const { language: { titles, contactForm, buttons, messages } } = useContext(LanguageContext);
 
     function handleSubmission(values, { setSubmitting, resetForm }) {
         setIsLoading(true);
         uploadItem('messages', values)
             .then(res => {
                 setIsLoading(false);
-                setNotification({ type: 'success', message: 'Message sent successfully' });
+                setNotification({ type: 'success', message: messages.success });
                 console.log(res);
                 setSubmitting(false);
                 resetForm();
@@ -26,7 +28,7 @@ const Contact = () => {
                 setIsLoading(false);
                 setSubmitting(false);
                 console.log(err.code);
-                setNotification({ type: 'warning', message: 'Something went wrong. Your message was NOT sent. Please try again' });
+                setNotification({ type: 'warning', message: messages.failure });
             });
     }
 
@@ -34,8 +36,8 @@ const Contact = () => {
         <>
             <Spacer height={5} />
             <Container className="col-md-6 form-container p-5">
-                <h2>Get in touch</h2>
-                <p> Please fill out all fields. </p>
+                <h2>{titles.contact.main}</h2>
+                <p> {titles.contact.sub} </p>
                 <Formik
                     initialValues={{ name: '', email: '', subject: '', message: '' }}
                     validationSchema={contactFormSchema}
@@ -47,7 +49,7 @@ const Contact = () => {
                                 <Field name="name" >
                                     {() => (
                                         <Form.Group className="col-sm-6 py-3">
-                                            <Form.Label> Name:</Form.Label>
+                                            <Form.Label>{contactForm.name}</Form.Label>
                                             <Form.Control
                                                 name="name"
                                                 value={values.name}
@@ -55,7 +57,7 @@ const Contact = () => {
                                                 onBlur={handleBlur}
                                                 isInvalid={touched.name && errors.name}
                                                 type="text"
-                                                placeholder="Your name"
+                                                placeholder={contactForm.placeholders.name}
                                             />
                                             <ErrorMessage name="name" component="div" style={{ position: 'absolute', color: '#dc3545' }} />
                                         </Form.Group>
@@ -64,7 +66,7 @@ const Contact = () => {
                                 <Field>
                                     {() => (
                                         <Form.Group className="col-sm-6 py-3">
-                                            <Form.Label> Email:</Form.Label>
+                                            <Form.Label>{contactForm.email}</Form.Label>
                                             <Form.Control
                                                 id="email"
                                                 name="email"
@@ -73,7 +75,7 @@ const Contact = () => {
                                                 onBlur={handleBlur}
                                                 isInvalid={(touched.email && errors.email)}
                                                 type="email"
-                                                placeholder="Your email"
+                                                placeholder={contactForm.placeholders.email}
                                             />
                                             <ErrorMessage name="email" component="div" style={{ position: 'absolute', color: '#dc3545' }} />
                                         </Form.Group>
@@ -84,7 +86,7 @@ const Contact = () => {
                                 <Field>
                                     {() => (
                                         <Form.Group className="col-sm-12 py-3">
-                                            <Form.Label> Subject:</Form.Label>
+                                            <Form.Label>{contactForm.subject}</Form.Label>
                                             <Form.Control
                                                 id="subject"
                                                 name="subject"
@@ -93,7 +95,7 @@ const Contact = () => {
                                                 onBlur={handleBlur}
                                                 isInvalid={(touched.subject && errors.subject)}
                                                 type="text"
-                                                placeholder="Enter subject"
+                                                placeholder={contactForm.placeholders.subject}
                                             />
                                             <ErrorMessage name="subject" component="div" style={{ position: 'absolute', color: '#dc3545' }} />
                                         </Form.Group>
@@ -104,7 +106,7 @@ const Contact = () => {
                                 <Field>
                                     {() => (
                                         <Form.Group className="col-sm-12 py-3">
-                                            <Form.Label> Message:</Form.Label>
+                                            <Form.Label>{contactForm.message}</Form.Label>
                                             <Form.Control
                                                 name="message"
                                                 value={values.message}
@@ -115,7 +117,7 @@ const Contact = () => {
                                                 type="textarea"
                                                 maxLength="500"
                                                 rows="6"
-                                                placeholder="Enter message"
+                                                placeholder={contactForm.placeholders.message}
                                             />
                                             <ErrorMessage name="message" component="div" style={{ position: 'absolute', color: '#dc3545' }} />
                                         </Form.Group>
@@ -124,10 +126,10 @@ const Contact = () => {
                             </Row>
                             <Row className="py-3">
                                 <Col>
-                                    <Button type="button" disabled={isSubmitting} onClick={resetForm} variant="outline-dark">Reset</Button>
+                                    <Button type="button" disabled={isSubmitting} onClick={resetForm} variant="outline-dark">{buttons.contact.reset}</Button>
                                 </Col>
                                 <Col className="text-end">
-                                    <Button type="submit" disabled={isSubmitting} variant="outline-dark">Send</Button>
+                                    <Button type="submit" disabled={isSubmitting} variant="outline-dark">{buttons.contact.send}</Button>
                                 </Col>
                             </Row>
                         </FormikForm>

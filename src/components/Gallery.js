@@ -5,11 +5,13 @@ import { getLink } from "../utils/firebaseStorage";
 import LoadingContext from "../context/loadingContext";
 import Spacer from "./Spacer";
 import NotificationContext from "../context/notificationContext";
+import LanguageContext from "../context/languageContext";
 
 const Gallery = () => {
 
     const { isLoading, setIsLoading } = useContext(LoadingContext);
     const { setNotification } = useContext(NotificationContext);
+    const { language: { titles, messages } } = useContext(LanguageContext);
     const [images, setImages] = useState(null);
     const [caps, setCaps] = useState([]);
 
@@ -43,14 +45,14 @@ const Gallery = () => {
             .catch(err => {
                 setIsLoading(false);
                 console.log(err.code);
-                setNotification({ type: 'warning', message: 'Something went wrong. Check connection and try again' });
+                setNotification({ type: 'warning', message: messages.warning });
             });
-    }, [setIsLoading, setNotification]);
+    }, [setIsLoading, setNotification, messages.warning]);
 
     return (
         <Container fluid className="py-2 px-0">
             <Spacer height={5} />
-            <h1>Photos</h1>
+            <h1>{titles.photos}</h1>
             <Container fluid className="bg-dark px-0" style={{ height: '100vh' }}>
                 {!!images && !isLoading && (
                     <Carousel indicators={false} interval={null}>

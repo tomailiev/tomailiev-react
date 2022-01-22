@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { Button, Card, Container, Modal, Row } from "react-bootstrap"
 import EventContext from "../context/eventContext";
+import LanguageContext from "../context/languageContext";
 import createGCalLink from "../utils/gCalendarUtil";
 import Iframe from "./Iframe"
 
 const EventModal = () => {
     const { event, setEvent } = useContext(EventContext);
+    const { language: { buttons: {calendar} } } = useContext(LanguageContext);
 
     function handleClose() {
         setEvent(null);
@@ -36,7 +38,7 @@ const EventModal = () => {
                                         variant="outline-dark"
                                         href={createGCalLink(event)}
                                         target="_blank"
-                                        rel="nofollow">Add to calendar</Button>
+                                        rel="nofollow">{calendar.add}</Button>
                                 </Card.Body>
                             </Card>
                         </div>
@@ -44,8 +46,8 @@ const EventModal = () => {
                 </Container>
             </Modal.Body>
             <Modal.Footer>
-                <Button size="sm" variant="outline-dark" onClick={handleClose}>Close</Button>
-                <Button size="sm" variant="outline-dark" id="tix" href={event.eventUrl} target="blank">Tickets</Button>
+                <Button size="sm" variant="outline-dark" onClick={handleClose}>{calendar.close}</Button>
+                <Button size="sm" variant="outline-dark" id="tix" href={event.eventUrl} target="blank">{calendar.tickets}</Button>
             </Modal.Footer>
             {/* </div> */}
             {/* </Modal.Dialog> */}
