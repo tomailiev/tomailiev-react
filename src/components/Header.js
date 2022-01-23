@@ -1,18 +1,36 @@
+import flag_en from '../imgs/gb.svg';
+import flag_bg from '../imgs/bg.svg';
 import { useContext, useState } from "react";
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap"
+import { Container, Image, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import LanguageContext from "../context/languageContext";
 import NavbarThemeContext from "../context/navbarThemeContext";
 
 const Header = () => {
     const { navbarTheme } = useContext(NavbarThemeContext);
-    const { language: { navs } } = useContext(LanguageContext);
+    const { language: { navs }, setLanguage, code } = useContext(LanguageContext);
     const [navbarBG, setNavbarBG] = useState(null);
+
+    const imageCss = {
+        position: 'relative',
+        left: '50%',
+        top: '22%',
+        width: '20px',
+        maxWidth: '100%',
+        maxHeight: '100%',
+        transform: 'translate(-50%, -50%)',
+        cursor: 'pointer'
+    }
+
 
     function toggleNavbarBG(expanded) {
         expanded
             ? setNavbarBG(navbarTheme ? 'dark' : 'light')
             : setNavbarBG(null);
+    }
+
+    function toggleLanguage() {
+        setLanguage(prev => prev === 'en' ? 'bg' : 'en');
     }
 
     return (
@@ -51,6 +69,9 @@ const Header = () => {
                             <LinkContainer className="p-3" to="contact">
                                 <Nav.Link>{navs.contact}</Nav.Link>
                             </LinkContainer>
+                            <Nav.Item onClick={toggleLanguage} className="p-3">
+                                <Image src={code === 'en' ? flag_bg : flag_en} style={imageCss} />
+                            </Nav.Item>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

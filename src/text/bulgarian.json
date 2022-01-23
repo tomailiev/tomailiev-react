@@ -1,5 +1,5 @@
 {
-    "fullBio": "Toma Iliev is a violinist focused on historically informed performance. Holder of the Ruth and Charles Poindexter chair with the Portland Baroque Orchestra, recent engagements include performances with Philharmonia Baroque Orchestra, American Bach Soloists, Oregon Bach Festival, Indianapolis Baroque Orchestra, Clarion Music Society, and the Valley of the Moon Festival, as well as broadcasts on MediciTV, BBC3 radio, WQXR, and the CBC “Rush Hour” series.$$$ An avid chamber musician, Toma is a member of the Renaissance ensemble Sonnambula, who held the position of 2018 - 19 artists in residence of New York's Metropolitan Museum of Art. Toma was the winner of the 2014 Christa Bach - Marschall Foundation Prize from the Leipzig International Bach Competition, and was the winner of the 2013 Indianapolis Baroque Orchestra Concerto Competition.$$$ A native of Sofia, Bulgaria, Toma discovered his passion for music at an early age.Beginning hisstudies at the National Music School in Sofia, he later received his bachelor and master of music degrees at Indiana University where he studied with Kevork Madriossian and Stanley Ritchie, and received his graduate diploma from the Juilliard School, where he was a member of the prestigious and selective historical performance program.$$$ In addition to performing on baroque and classical violin, his versatility has led him to solo and chamber performances on baroque and classical viola, viola d'amore, and tenor viol, and modern engagements with such ensembles as San Francisco - based conductorless chamber orchestra One Found Sound. Having learned from inspirational figures such as Stanley Ritchie, Monica Huggett, Rachel Podger, Nigel North, Jordi Savall, Robert Levin, Richard Egarr and others, Toma has been developing his own vision of the specifics of historically informed performance and is focused on bringing the evolving principles of the HIP movement to each performance as well as music beyond the baroque and classical repertoire.",
+    "fullBio": "Тома Илиев е сред най-търсените и изявени музиканти в сферата на историческия пърформанс в Съединените Щати. Той е част от камерния ансамбъл за старинна музика Соннамбула (Sonnambula), който е първия и единствен исторически информиран ансамбъл, получил резиденция в престижния Метрополитън(The Metropolitan Museum of Art) музей в Ню Йорк през сезон 2018-2019. Като солист, помощник концерт-майстор и камерен музикант, Тома има наименувано място в Портландския Бароков Оркестър(Portland Baroque Orchestra). Други състави, с които Тома има редовни или сезонни участия като солист, концертмайстор и камерен музикант са American Bach Soloists – San Francisco CA, Philharmonia Baroque Orchestra – San Francisco CA, Trinity Baroque Orchestra – New York NY, Clarion Music Society – New York NY, Orchestra of the Age of Enlightenment – London UK, Les Arts Florissants – Paris France, Seattle Baroque Orchestra – Seattle WA, Pacific Baroque Orchestra – Vancouver BC, Voices of Music – San Francisco CA, и др..$$$ Тома е носител на наградата Криста Бах-Маршал от международния конкурс Leipzig International Bach Competition – Лайпциг 2014 както и победител в концертния конкурс на Indianapolis Baroque Orchestra от 2013. В последните години Тома има изяви на следните международни фестивали: Caramoor Summer Festival, Norfolk Chamber Music Festival, American Bach Soloists Festival. Berkeley Festival and Exhibition, Dans les Jardins de William Christie.$$$ Тома Илиев е роден в София и завършил НМУ Любомир Пипков. Получава бакалавърска и магистърска степени от Университета на Индиана, в класовете по цигулка и старинна цигулка съответно на проф. Кеворк Мардиросян и проф. Стенли Ричи. Тома завършва своята специализация по исторически информиран пърформанс в Джулиърд, където получава възможността да учи и музицира с някои от най-известните изпълнители в тази сфера: Моника Хъгет, Рейчъл Поджър, Масааки Сузуки, Джорди Савал, Уилям Кристи, Ричърд Игър и други. Тома обича често да сменя инструментите, като освен в естествената си роля на цигулар, той има участия на виола д'аморе, виола да гамба, старинна виола, а в последно време и на клавесин.",
     "miniBio": "Тома Илиев е сред най-търсените и изявени музиканти в сферата на историческия пърформанс в Съединените Щати. Той е част от камерния ансамбъл за старинна музика „Соннамбула“ , който е първия и единствен исторически информиран ансамбъл, получил резиденция в престижния Метрополитън музей в Ню Йорк през сезон 2018-2019. През 2021 Тома е носител на наградата \"Джефри Томас\" от Американските Бахови Солисти.",
     "blockquotes": [
         {
@@ -15,7 +15,7 @@
         "home": "начало",
         "about": "за мен",
         "calendar": "събития",
-        "media": "медия",
+        "media": "мултимедия",
         "photos": "снимки",
         "audio": "аудио",
         "video": "видео",
@@ -32,57 +32,71 @@
             "events": "Предстоящи събития",
             "media": "Медия на фокус"
         },
-        "about": "About",
-        "calendar": "Performances",
-        "photos": "Photos",
-        "audio": "Audios",
-        "video": "Videos",
-        "disco": "Recordings",
+        "about": "За мен",
+        "calendar": "Събития",
+        "photos": "Снимки",
+        "audios": "Аудио",
+        "videos": "Видео",
+        "disco": "Записи",
         "contact": {
-            "main": "Get in touch",
-            "sub": "Please fill out all fields."
+            "main": "Форма за контакт",
+            "sub": "Моля попълнете всички полета."
         }
     },
     "footer": {
-        "copy": "© 2020-2022 Copyright:",
+        "copy": "© 2020-2022 Запазена марка:",
         "bold": " tomailiev.com"
     },
     "buttons": {
         "home": {
             "bio": "Прочетете още",
-            "buyCD": "Купете запис",
-            "moreCD": "Още записи",
+            "buyCD": "Купете",
+            "moreCDs": "Още записи",
             "events": "Намерете още",
             "audio": "Чуйте още",
             "video": "Вижте още"
         },
         "calendar": {
             "details": "Детайли",
-            "tickets": "Билети"
+            "tickets": "Билети",
+            "add": "Добавете в календар",
+            "close": "Затворете"
         },
         "contact": {
-            "send": "Send",
-            "reset": "Reset"
+            "send": "Изпратете",
+            "reset": "Занулете"
         }
     },
     "eventTable": {
-        "date": "Date",
-        "event": "Event",
-        "location": "Location",
-        "venue": "Venue",
-        "tickets": "Tickets",
-        "more": "More"
+        "date": "Дата",
+        "event": "Събитие",
+        "location": "Град",
+        "venue": "Място",
+        "tickets": "Билети",
+        "more": "Още"
     },
     "contactForm": {
-        "name": "Name:",
-        "email": "Email:",
-        "subject": "Subject:",
-        "message": "Message:"
+        "name": "Име:",
+        "email": "Имейл:",
+        "subject": "Заглавие:",
+        "message": "Съобщение:",
+        "placeholders": {
+            "name": "Вашето име",
+            "email": "Вашия имейл",
+            "subject": "Въведете заглавие",
+            "message": "Въведете съобщение"
+        }
     },
     "negatives": {
         "events": "Няма намерени събития ",
         "audios": "Няма намерени аудио. Моля проверете по-късно.",
         "videos": "Няма намерени видео. Моля проверете по-късно.",
         "disco": "Няма намерени записи. Моля проверете по-късно."
+    },
+    "messages": {
+        "warning": "Получи се грешка. Моля проверете интернет връзката си и опитайте отново",
+        "success": "Вашето съобщение е изпратено успешно.",
+        "failure": "Получи се грешка. Съобщението НЕ е изпратено. Опитайте отново",
+        "home": "Получи се (малка) грешка"
     }
 }

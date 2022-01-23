@@ -1,4 +1,4 @@
-import { Carousel, Container, Image } from "react-bootstrap"
+import { Container } from "react-bootstrap"
 import { useContext, useEffect, useState } from "react";
 import { getItems } from "../utils/firebaseDB";
 import { getLink } from "../utils/firebaseStorage";
@@ -6,6 +6,7 @@ import LoadingContext from "../context/loadingContext";
 import Spacer from "./Spacer";
 import NotificationContext from "../context/notificationContext";
 import LanguageContext from "../context/languageContext";
+import ImageCarousel from "./ImageCarousel";
 
 const Gallery = () => {
 
@@ -15,14 +16,6 @@ const Gallery = () => {
     const [images, setImages] = useState(null);
     const [caps, setCaps] = useState([]);
 
-    const imgCSS = {
-        position: 'relative',
-        left: '50%',
-        top: '50%',
-        maxWidth: '100%',
-        maxHeight: '100%',
-        transform: 'translate(-50%, -50%)',
-    }
 
     useEffect(() => {
         setIsLoading(true);
@@ -47,7 +40,7 @@ const Gallery = () => {
                 console.log(err.code);
                 setNotification({ type: 'warning', message: messages.warning });
             });
-    }, [setIsLoading, setNotification, messages.warning]);
+    }, [setIsLoading, setNotification]);
 
     return (
         <Container fluid className="py-2 px-0">
@@ -55,17 +48,7 @@ const Gallery = () => {
             <h1>{titles.photos}</h1>
             <Container fluid className="bg-dark px-0" style={{ height: '100vh' }}>
                 {!!images && !isLoading && (
-                    <Carousel indicators={false} interval={null}>
-                        {images.map((x, i) => (
-                            <Carousel.Item key={x} style={{ height: '100vh' }}>
-                                <Image loading="lazy" src={x} style={imgCSS} />
-                                <Carousel.Caption>
-                                    <p className="text-light bg-dark">{caps[i]}</p>
-                                </Carousel.Caption>
-                                {/* <div className="text-light">{x.caption}</div> */}
-                            </Carousel.Item>
-                        ))}
-                    </Carousel>
+                    <ImageCarousel images={images} caps={caps} />
                 )}
             </Container>
             <Spacer height={5} />

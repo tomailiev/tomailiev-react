@@ -12,7 +12,7 @@ import Spacer from "./Spacer";
 const Calendar = () => {
     const { isLoading, setIsLoading } = useContext(LoadingContext);
     const { setNotification } = useContext(NotificationContext);
-    const { language: { titles, negatives } } = useContext(LanguageContext);
+    const { language: { titles, negatives, messages } } = useContext(LanguageContext);
 
     const [events, setEvents] = useState(null);
 
@@ -26,7 +26,7 @@ const Calendar = () => {
             .catch(err => {
                 setIsLoading(false);
                 console.log(err.code);
-                setNotification({ type: 'warning', message: 'Something went wrong. Check connection and try again' });
+                setNotification({ type: 'warning', message: messages.warning });
             });
     }, [setIsLoading, setNotification]);
 

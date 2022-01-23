@@ -30,7 +30,7 @@ const Media = () => {
                 console.log(err.code);
                 setNotification({ type: 'warning', message: messages.warning });
             });
-    }, [mediaType, setIsLoading, setNotification, messages.warning]);
+    }, [mediaType, setIsLoading, setNotification]);
 
     return (
         <Container id={mediaType} className="py-2">

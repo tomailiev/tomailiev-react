@@ -26,7 +26,7 @@ const Discography = () => {
                 console.log(err.code);
                 setNotification({ type: 'warning', message: messages.warning });
             });
-    }, [setIsLoading, setNotification, messages.warning]);
+    }, [setIsLoading, setNotification]);
 
     return (
         <Container className="py-5">
