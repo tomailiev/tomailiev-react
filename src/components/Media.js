@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
+import LanguageContext from "../context/languageContext";
 import LoadingContext from "../context/loadingContext";
 import NotificationContext from "../context/notificationContext";
 import { getItems } from "../utils/firebaseDB";
@@ -11,8 +12,8 @@ const Media = () => {
 
     const { isLoading, setIsLoading } = useContext(LoadingContext);
     const { setNotification } = useContext(NotificationContext);
+    const {language: {titles, negatives, messages}} = useContext(LanguageContext);
     const [mediaItems, setMediaItems] = useState(null);
-
     const { pathname } = useLocation();
     const mediaType = pathname.substring(1);
 
@@ -27,14 +28,14 @@ const Media = () => {
             .catch(err => {
                 setIsLoading(false);
                 console.log(err.code);
-                setNotification({ type: 'warning', message: 'Something went wrong. Check connection and try again' });
+                setNotification({ type: 'warning', message: messages.warning });
             });
     }, [mediaType, setIsLoading, setNotification]);
 
     return (
         <Container id={mediaType} className="py-2">
             <Spacer height={5} />
-            <h1 className="pagetitle text-capitalize">{mediaType}</h1>
+            <h1 className="pagetitle text-capitalize">{titles[mediaType]}</h1>
             {!isLoading && (mediaItems?.length
                 ? mediaItems.map(x => (
                     <Row key={x.id} className="py-5">
@@ -47,7 +48,7 @@ const Media = () => {
                         </div>
                     </Row>
                 ))
-                : <h4 className="py-2">No {mediaType} found. Please check back later.</h4>)
+                : <h4 className="py-2">{negatives[mediaType]}</h4>)
             }
         </Container>
     );

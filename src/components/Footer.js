@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { Button, Container, Row } from "react-bootstrap";
+import LanguageContext from "../context/languageContext";
 import Spacer from "./Spacer";
 
 const Footer = () => {
+    const {language: {footer}} = useContext(LanguageContext);
     return (
         <>
             <Spacer height={5} />
@@ -15,8 +18,8 @@ const Footer = () => {
                         </Container>
                     </Row>
                     <Row className="justify-content-center">
-                        <div className="footer-copyright text-center py-3">© 2020-2022 Copyright:
-                            <span className="font-weight-bold"> tomailiev.com</span>
+                        <div className="footer-copyright text-center py-3">{footer.copy}
+                            <span className="font-weight-bold">{footer.bold}</span>
                         </div>
                     </Row>
                 </Container>

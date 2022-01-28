@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { Button, Card, Container, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import LanguageContext from "../context/languageContext";
 
 const RecCardMini = ({ rec }) => {
+    const { language: { buttons } } = useContext(LanguageContext);
+
     return (
         <Card>
             <div className="img-restrain">
@@ -13,10 +17,10 @@ const RecCardMini = ({ rec }) => {
                 <Container fluid>
                     <Row>
                         <Button href={rec.cdUrl} rel="noreferrer" target="_blank" size="sm" variant="outline-dark" className="my-2">
-                            Buy CD
+                            {buttons.home.buyCD}
                         </Button>
                         <LinkContainer to="/disco">
-                            <Button size="sm" variant="outline-dark">More CDs</Button>
+                            <Button size="sm" variant="outline-dark">{buttons.home.moreCDs}</Button>
                         </LinkContainer>
                     </Row>
                 </Container>

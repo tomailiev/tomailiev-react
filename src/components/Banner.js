@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Container, Row } from "react-bootstrap";
+import LanguageContext from "../context/languageContext";
 import bannerImage from '../imgs/6.jpg';
 import backupBannerImage from '../imgs/6666.jpg';
 
@@ -10,12 +12,14 @@ const bannerCSS = {
 }
 
 const Banner = () => {
+    const { language: { titles } } = useContext(LanguageContext);
+
     return (
         <Container fluid className="align-items-center" style={bannerCSS}>
             <Row style={{ height: '100%' }} className="align-items-center">
                 <div className="text-center text-white col-md-4 offset-md-8">
-                    <h1>Toma Iliev</h1>
-                    <h3>Historical Strings</h3>
+                    <h1>{titles.home.main}</h1>
+                    <h3>{titles.home.sub}</h3>
                 </div>
             </Row>
         </Container>

@@ -3,6 +3,7 @@ import { Button, Col, Container, Row } from "react-bootstrap"
 import { LinkContainer } from "react-router-bootstrap"
 import NavbarThemeContext from "../context/navbarThemeContext"
 import NotificationContext from "../context/notificationContext"
+import LanguageContext from '../context/languageContext'
 import { getItems } from "../utils/firebaseDB"
 import Banner from "./Banner"
 import BioMini from "./BioMini"
@@ -15,6 +16,7 @@ const Home = () => {
 
     const { setNavbarTheme } = useContext(NavbarThemeContext);
     const { setNotification } = useContext(NotificationContext);
+    const { language: { buttons, titles, negatives, messages } } = useContext(LanguageContext);
 
     const [rec, setRec] = useState(null);
     const [audio, setAudio] = useState(null);
@@ -43,13 +45,13 @@ const Home = () => {
                 featuredAudio.value && setAudio(...featuredAudio.value);
                 featuredEvents.value && setEvents(featuredEvents.value);
                 if (results.find(x => x.status === 'rejected')) {
-                    throw new Error('Something went (mildly) wrong');
+                    throw new Error(messages.home);
                 }
             })
             .catch(err => {
                 setNotification({ type: 'warning', message: err.message });
             });
-    }, [setNotification]);
+    }, [setNotification, messages.home]);
 
     return (
         <>
@@ -59,34 +61,34 @@ const Home = () => {
                 <Row>
                     <BioMini />
                     {rec && <Col md={{ span: 3, offset: 1 }}>
-                        <h3 className="my-3">Featured recording</h3>
+                        <h3 className="my-3">{titles.home.rec}</h3>
                         <RecCardMini rec={rec} />
                     </Col>}
                 </Row>
             </Container>
             <Container fluid className="bg-dark text-white py-5 snaptarget mt-3">
                 <Container>
-                    <h3 className="pb-3">Upcoming events</h3>
+                    <h3 className="pb-3">{titles.home.events}</h3>
                     {events.length
                         ?
                         <>
                             <EventsTable events={events} />
                             <LinkContainer to="/calendar">
-                                <Button size="sm" variant="outline-light">Continue browsing &#187;</Button>
+                                <Button size="sm" variant="outline-light">{buttons.home.events} &#187;</Button>
                             </LinkContainer>
                         </>
-                        : <h4>No events found <i className="fas fa-heart-broken"></i></h4>}
+                        : <h4>{negatives.events}<i className="fas fa-heart-broken"></i></h4>}
                 </Container>
             </Container>
             <Container className="py-5 bg-light snaptarget">
-                <h3>Featured media</h3>
+                <h3>{titles.home.media}</h3>
                 <Row className="py-3">
                     {audio && <Col md={12} lg={4}>
                         <MediaCardMini media={audio} />
                         <div className="mx-auto pt-3 pb-5">
                             <LinkContainer to="/audios">
                                 <Button size="sm" variant="outline-dark">
-                                    Continue listening &#187;
+                                    {buttons.home.audio} &#187;
                                 </Button>
                             </LinkContainer>
                         </div>
@@ -96,7 +98,7 @@ const Home = () => {
                         <div className="mx-auto pt-3 pb-5">
                             <LinkContainer to="/videos">
                                 <Button size="sm" variant="outline-dark">
-                                    Continue watching &#187;
+                                    {buttons.home.video} &#187;
                                 </Button>
                             </LinkContainer>
                         </div>

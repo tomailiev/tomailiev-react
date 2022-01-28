@@ -16,37 +16,42 @@ import NavbarThemeContext from './context/navbarThemeContext';
 import NotificationContext from './context/notificationContext';
 import Toaster from './components/Toaster';
 import LoadingModal from './components/LoadingModal';
+import LanguageContext from './context/languageContext';
+import { lang } from './text';
 
 function App() {
   const [event, setEvent] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [notification, setNotification] = useState(null);
   const [navbarTheme, setNavbarTheme] = useState(null);
+  const [language, setLanguage] = useState('en');
 
   return (
     <div className="App">
-      <LoadingContext.Provider value={{ isLoading, setIsLoading }}>
-        <NotificationContext.Provider value={{ notification, setNotification }}>
-          <EventContext.Provider value={{ event, setEvent }} >
-            <NavbarThemeContext.Provider value={{ navbarTheme, setNavbarTheme }} >
-              <Header />
-              <Toaster />
-              <LoadingModal />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="about" element={<About />} />
-                <Route path="calendar" element={<Calendar />} />
-                <Route path="photos" element={<Gallery />} />
-                <Route path="videos" element={<Media />} />
-                <Route path="audios" element={<Media />} />
-                <Route path="disco" element={<Discography />} />
-                <Route path="contact" element={<Contact />} />
-              </Routes>
-              <Footer />
-            </NavbarThemeContext.Provider>
-          </EventContext.Provider>
-        </NotificationContext.Provider>
-      </LoadingContext.Provider>
+      <LanguageContext.Provider value={{ setLanguage, language: lang[language], code: language }}>
+        <LoadingContext.Provider value={{ isLoading, setIsLoading }}>
+          <NotificationContext.Provider value={{ notification, setNotification }}>
+            <EventContext.Provider value={{ event, setEvent }} >
+              <NavbarThemeContext.Provider value={{ navbarTheme, setNavbarTheme }} >
+                <Header />
+                <Toaster />
+                <LoadingModal />
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="about" element={<About />} />
+                  <Route path="calendar" element={<Calendar />} />
+                  <Route path="photos" element={<Gallery />} />
+                  <Route path="videos" element={<Media />} />
+                  <Route path="audios" element={<Media />} />
+                  <Route path="disco" element={<Discography />} />
+                  <Route path="contact" element={<Contact />} />
+                </Routes>
+                <Footer />
+              </NavbarThemeContext.Provider>
+            </EventContext.Provider>
+          </NotificationContext.Provider>
+        </LoadingContext.Provider>
+      </LanguageContext.Provider>
     </div>
   );
 }
