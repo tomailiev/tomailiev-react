@@ -12,7 +12,7 @@ const Media = () => {
 
     const { isLoading, setIsLoading } = useContext(LoadingContext);
     const { setNotification } = useContext(NotificationContext);
-    const {language: {titles, negatives, messages}} = useContext(LanguageContext);
+    const { language: { titles, negatives, messages } } = useContext(LanguageContext);
     const [mediaItems, setMediaItems] = useState(null);
     const { pathname } = useLocation();
     const mediaType = pathname.substring(1);
@@ -30,6 +30,7 @@ const Media = () => {
                 console.log(err.code);
                 setNotification({ type: 'warning', message: messages.warning });
             });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [mediaType, setIsLoading, setNotification]);
 
     return (

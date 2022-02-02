@@ -51,7 +51,8 @@ const Home = () => {
             .catch(err => {
                 setNotification({ type: 'warning', message: err.message });
             });
-    }, [setNotification, messages.home]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [setNotification]);
 
     return (
         <>
@@ -103,6 +104,7 @@ const Home = () => {
                             </LinkContainer>
                         </div>
                     </Col>}
+                    {(!audio && !video) && <h4 className="py-2">{negatives.media}</h4>}
                 </Row>
             </Container>
             <EventModal />

@@ -26,7 +26,9 @@ const Header = () => {
     function toggleNavbarBG(expanded) {
         expanded
             ? setNavbarBG(navbarTheme ? 'dark' : 'light')
-            : setNavbarBG(null);
+            : setTimeout(() => {
+                setNavbarBG(null);
+            }, 300);
     }
 
     function toggleLanguage() {

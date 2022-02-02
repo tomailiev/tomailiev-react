@@ -91,7 +91,8 @@
         "events": "No events found ",
         "audios": "No audios found. Please check back later.",
         "videos": "No videos found. Please check back later.",
-        "disco": "No recordings found. Please check back later."
+        "disco": "No recordings found. Please check back later.",
+        "media": "No media found. Please check back later."
     },
     "messages": {
         "warning": "Something went wrong. Check connection and try again",
