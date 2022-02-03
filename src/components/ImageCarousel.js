@@ -1,21 +1,13 @@
 import { Carousel, Image } from "react-bootstrap";
+import { imageCarouselCSS } from '../styles-js';
 
 const ImageCarousel = ({ images, caps }) => {
-
-    const imgCSS = {
-        position: 'relative',
-        left: '50%',
-        top: '50%',
-        maxWidth: '100%',
-        maxHeight: '100%',
-        transform: 'translate(-50%, -50%)',
-    }
 
     return (
         <Carousel indicators={false} interval={null}>
             {images.map((x, i) => (
-                <Carousel.Item key={x} style={{ height: '100vh' }}>
-                    <Image loading="lazy" src={x} style={imgCSS} />
+                <Carousel.Item key={x} className="vh-100">
+                    <Image loading="lazy" src={x} style={imageCarouselCSS} />
                     <Carousel.Caption>
                         <p className="text-light bg-dark">{caps[i]}</p>
                     </Carousel.Caption>

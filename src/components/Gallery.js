@@ -47,7 +47,7 @@ const Gallery = () => {
         <Container fluid className="py-2 px-0">
             <Spacer height={5} />
             <h1>{titles.photos}</h1>
-            <Container fluid className="bg-dark px-0" style={{ height: '100vh' }}>
+            <Container fluid className="bg-dark px-0 vh-100">
                 {!!images && !isLoading && (
                     <ImageCarousel images={images} caps={caps} />
                 )}

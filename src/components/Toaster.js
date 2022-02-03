@@ -12,9 +12,6 @@ const Toaster = () => {
     return (
         <ToastContainer position="top-end" className="position-fixed bottom-0 end-0 p-3" style={{ zIndex: 800 }}>
             <Toast autohide={true} delay={5000} bg={'dark' || notification?.type} show={!!notification} onClose={() => setNotification(null)}>
-                {/* <Toast.Header closeButton={true}>
-                    <strong className="me-auto">Toma Iliev says:</strong>
-                </Toast.Header> */}
                 <Toast.Body className="text-white">
                     {notification?.message}
                 </Toast.Body>
