@@ -7,6 +7,7 @@ import { useContext } from "react";
 import NotificationContext from "../context/notificationContext";
 import LoadingContext from "../context/loadingContext";
 import LanguageContext from "../context/languageContext";
+import { errorMessageCSS } from '../styles-js';
 
 const Contact = () => {
 
@@ -59,7 +60,7 @@ const Contact = () => {
                                                 type="text"
                                                 placeholder={contactForm.placeholders.name}
                                             />
-                                            <ErrorMessage name="name" component="div" style={{ position: 'absolute', color: '#dc3545' }} />
+                                            <ErrorMessage name="name" component="div" style={errorMessageCSS} />
                                         </Form.Group>
                                     )}
                                 </Field>
@@ -77,7 +78,7 @@ const Contact = () => {
                                                 type="email"
                                                 placeholder={contactForm.placeholders.email}
                                             />
-                                            <ErrorMessage name="email" component="div" style={{ position: 'absolute', color: '#dc3545' }} />
+                                            <ErrorMessage name="email" component="div" style={errorMessageCSS} />
                                         </Form.Group>
                                     )}
                                 </Field>
@@ -97,7 +98,7 @@ const Contact = () => {
                                                 type="text"
                                                 placeholder={contactForm.placeholders.subject}
                                             />
-                                            <ErrorMessage name="subject" component="div" style={{ position: 'absolute', color: '#dc3545' }} />
+                                            <ErrorMessage name="subject" component="div" style={errorMessageCSS} />
                                         </Form.Group>
                                     )}
                                 </Field>
@@ -119,7 +120,7 @@ const Contact = () => {
                                                 rows="6"
                                                 placeholder={contactForm.placeholders.message}
                                             />
-                                            <ErrorMessage name="message" component="div" style={{ position: 'absolute', color: '#dc3545' }} />
+                                            <ErrorMessage name="message" component="div" style={errorMessageCSS} />
                                         </Form.Group>
                                     )}
                                 </Field>
