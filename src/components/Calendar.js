@@ -28,6 +28,7 @@ const Calendar = () => {
                 console.log(err.code);
                 setNotification({ type: 'warning', message: messages.warning });
             });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [setIsLoading, setNotification]);
 
     return (
