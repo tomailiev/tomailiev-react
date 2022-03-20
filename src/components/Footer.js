@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Button, Container, Row } from "react-bootstrap";
 import LanguageContext from "../context/languageContext";
+import { footerCSS } from "../styles-js";
 import Spacer from "./Spacer";
 
 const Footer = () => {
@@ -8,7 +9,7 @@ const Footer = () => {
     return (
         <>
             <Spacer height={5} />
-            <footer className="panel-footer bg-dark border-top text-light">
+            <footer className="panel-footer bg-dark text-light" style={footerCSS}>
                 <Container fluid>
                     <Row className="justify-content-center my-2">
                         <Container className="text-center">
