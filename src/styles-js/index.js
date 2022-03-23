@@ -7,6 +7,10 @@ import imageBGCSS from './imageBG';
 import overlayCSS from './overlay';
 import spinnerBGCSS from './spinnerBG';
 import imageCarouselCSS from './imageCarousel';
+import navbarCSS from './navbar';
+import footerCSS from './footer';
+import homeCardCSS from './homeCard';
+
 
 export {
     bannerCSS,
@@ -17,6 +21,9 @@ export {
     imageBGCSS,
     overlayCSS,
     spinnerBGCSS,
-    imageCarouselCSS
+    imageCarouselCSS,
+    navbarCSS,
+    footerCSS,
+    homeCardCSS
 };
 
