@@ -1,8 +1,9 @@
 import { Button, ButtonGroup, Card, Col } from "react-bootstrap";
+import { homeCardCSS } from "../styles-js";
 
 const RecCard = ({ rec }) => {
     return (
-        <Card as={Col} className="disco-card px-0 my-4 mx-lg-4 mx-md-0">
+        <Card as={Col} className="disco-card px-0 my-4 mx-lg-4 mx-md-0" style={homeCardCSS}>
             <div className="img-restrain">
                 <a href={rec.infoUrl} target="_blank" rel="noreferrer">
                     <Card.Img className="card-img-top" src={rec.imageUrl} alt="Card image cap" />

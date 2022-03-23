@@ -11,6 +11,7 @@ import EventModal from "./EventModal"
 import EventsTable from "./EventsTable"
 import MediaCardMini from "./MediaCardMini"
 import RecCardMini from "./RecCardMini"
+import { footerCSS } from "../styles-js"
 
 const Home = () => {
 
@@ -67,7 +68,7 @@ const Home = () => {
                     </Col>}
                 </Row>
             </Container>
-            <Container fluid className="bg-dark text-white py-5 snaptarget mt-3">
+            <Container fluid className="bg-dark text-white py-5 snaptarget mt-3" style={footerCSS}>
                 <Container>
                     <h3 className="pb-3">{titles.home.events}</h3>
                     {events.length
