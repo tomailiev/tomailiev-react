@@ -28,9 +28,11 @@ const Header = () => {
         <header className="text-capitalize text-white snaptarget" style={headerCSS}>
             <Navbar onToggle={toggleNavbarBG} bg={navbarBG} variant={navbarTheme || 'light'} expand="lg" collapseOnSelect className="text-white" style={navbarBG && navbarCSS}>
                 <Container fluid>
-                    <LinkContainer to="/">
-                        <Navbar.Brand>{navs.brand}</Navbar.Brand>
-                    </LinkContainer>
+                    {navbarBG
+                        ? <Navbar.Brand>{navs.brand}</Navbar.Brand>
+                        : <LinkContainer to="/">
+                            <Navbar.Brand>{navs.brand}</Navbar.Brand>
+                        </LinkContainer>}
                     <Navbar.Toggle aria-controls="navbarSupportedContent" label="Toggle navigation" />
                     <Navbar.Collapse id="navbarSupportedContent" className="justify-content-md-end" >
                         <Nav>
@@ -43,7 +45,7 @@ const Header = () => {
                             <LinkContainer className="p-3" to="calendar">
                                 <Nav.Link>{navs.calendar}</Nav.Link>
                             </LinkContainer>
-                            <NavDropdown className="p-2" title={navs.media} id="navbarScrollingDropdown">
+                            <NavDropdown className="px-3 py-2" title={navs.media}>
                                 <LinkContainer to="photos">
                                     <NavDropdown.Item>{navs.photos}</NavDropdown.Item>
                                 </LinkContainer>
