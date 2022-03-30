@@ -45,7 +45,7 @@ const Header = () => {
                             <LinkContainer className="p-3" to="calendar">
                                 <Nav.Link>{navs.calendar}</Nav.Link>
                             </LinkContainer>
-                            <NavDropdown className="px-3 py-2" title={navs.media}>
+                            <NavDropdown className={navbarBG ? 'px-3 py-2' : 'p-2'} title={navs.media}>
                                 <LinkContainer to="photos">
                                     <NavDropdown.Item>{navs.photos}</NavDropdown.Item>
                                 </LinkContainer>
