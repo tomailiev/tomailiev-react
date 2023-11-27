@@ -2,7 +2,7 @@ import { Container, Image, Row } from "react-bootstrap";
 import BioFull from "./BioFull";
 import Blockquote from "./Blockquote";
 import Spacer from "./Spacer";
-import bioImage from '../imgs/ver3.jpg';
+import bioImage from '../imgs/toma_sq.webp';
 import { useContext } from "react";
 import LanguageContext from "../context/languageContext";
 
